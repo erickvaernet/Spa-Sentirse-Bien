@@ -1,20 +1,71 @@
 main{
     text-align: center;
-}
-
-.presentacion{
-    max-width: 50%;
-    margin: 75px auto;
-    font-size: 2rem;
-
-    /*H1*/
-    h1{        
-        color: $color-titulo;
-        span{
-            color: $color-titulo;
-            font-family: "Rochester";
-        }
-    }    
     
-    p{font-family: "Rochester";}
+
+    .presentacion{
+        max-width: 50%;
+        margin: 50px auto;      
+        
+        font-size: 2rem;    
+        
+        h1{        
+            color: $color-titulo;
+            span{
+                color: $color-titulo;
+                font-family: "Rochester";
+                font-weight: 400;
+            }
+        }       
+        
+        p{
+            font-family: "Rochester";
+            line-height: 46px;
+            font-weight: 400;
+        }
+    }
+
+    .protocolo{
+        margin: 5% auto;
+        
+        .back{
+            background-color: rgba($color: #000000, $alpha:0.4);
+            border-radius: 60px;
+            margin: auto;
+        }
+        .subtitulo{
+            height: 60px;
+            max-width: 290px;
+            margin: 15px auto;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;            
+
+            h3{
+            
+                color: #D75F04;
+                font-size: 2.5rem;
+                font-weight: 700;            
+            }
+        }        
+        .contenido{
+            max-width: 800px;
+            height: 290px;
+            margin: auto;
+            display: flex;
+            justify-items: center;
+
+            ul{
+                width: 700px;
+                margin: auto auto 25px auto; /*Revisar*/
+                list-style: none;
+                text-align: left;
+                li{
+                    line-height: 42px;
+                    font-size: 2rem;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
 }

@@ -65,23 +65,80 @@ main {
   text-align: center;
 }
 
-.presentacion {
+main .presentacion {
   max-width: 50%;
-  margin: 75px auto;
+  margin: 50px auto;
   font-size: 2rem;
-  /*H1*/
 }
 
-.presentacion h1 {
+main .presentacion h1 {
   color: #FA03E6;
 }
 
-.presentacion h1 span {
+main .presentacion h1 span {
   color: #FA03E6;
   font-family: "Rochester";
+  font-weight: 400;
 }
 
-.presentacion p {
+main .presentacion p {
   font-family: "Rochester";
+  line-height: 46px;
+  font-weight: 400;
+}
+
+main .protocolo {
+  margin: 5% auto;
+}
+
+main .protocolo .back {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 60px;
+  margin: auto;
+}
+
+main .protocolo .subtitulo {
+  height: 60px;
+  max-width: 290px;
+  margin: 15px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .protocolo .subtitulo h3 {
+  color: #D75F04;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+main .protocolo .contenido {
+  max-width: 800px;
+  height: 290px;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-items: center;
+}
+
+main .protocolo .contenido ul {
+  width: 700px;
+  margin: auto auto 25px auto;
+  /*Revisar*/
+  list-style: none;
+  text-align: left;
+}
+
+main .protocolo .contenido ul li {
+  line-height: 42px;
+  font-size: 2rem;
+  font-weight: 400;
 }
 /*# sourceMappingURL=style.css.map */
