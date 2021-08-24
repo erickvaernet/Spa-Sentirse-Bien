@@ -1,0 +1,31 @@
+
+header{   
+    background-color: rgba($color: #666666, $alpha: 0.5);
+    height: 3rem;    
+    font-weight: 700;     
+    
+    position: sticky;
+    top:0;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+
+    nav{
+        margin: auto;
+        width: 40%;        
+        ul{
+            list-style: none;
+            font-size: 1.5rem;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-around;
+            gap: 2rem;
+        }
+    }
+    
+}
+
+
+

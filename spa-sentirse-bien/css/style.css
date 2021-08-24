@@ -1,0 +1,87 @@
+/*Fuentes*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rochester&display=swap");
+/*Genreal*/
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Roboto",sans-serif;
+  color: #FFFFFF;
+}
+
+/*FondoS*/
+.fondo {
+  background-position: center;
+  background-size: cover;
+}
+
+.fondo-inicio {
+  background-image: url("../img/fondos-opc/fondo-spa.jpg");
+}
+
+header {
+  background-color: rgba(102, 102, 102, 0.5);
+  height: 3rem;
+  font-weight: 700;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header nav {
+  margin: auto;
+  width: 40%;
+}
+
+header nav ul {
+  list-style: none;
+  font-size: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  gap: 2rem;
+}
+
+main {
+  text-align: center;
+}
+
+.presentacion {
+  max-width: 50%;
+  margin: 75px auto;
+  font-size: 2rem;
+  /*H1*/
+}
+
+.presentacion h1 {
+  color: #FA03E6;
+}
+
+.presentacion h1 span {
+  color: #FA03E6;
+  font-family: "Rochester";
+}
+
+.presentacion p {
+  font-family: "Rochester";
+}
+/*# sourceMappingURL=style.css.map */

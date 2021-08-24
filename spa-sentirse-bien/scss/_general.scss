@@ -1,0 +1,20 @@
+/*Fuentes*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rochester&display=swap');
+
+/*Genreal*/
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: "Roboto",sans-serif;
+    color: #FFFFFF;
+}
+
+/*FondoS*/
+.fondo{    
+    background-position: center;
+    background-size: cover;
+}
+
+.fondo-inicio{background-image: url("../img/fondos-opc/fondo-spa.jpg");}
