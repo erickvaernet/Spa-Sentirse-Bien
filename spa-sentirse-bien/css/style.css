@@ -141,4 +141,12 @@ main .protocolo .contenido ul li {
   font-size: 2rem;
   font-weight: 400;
 }
+
+footer {
+  text-align: center;
+}
+
+footer .redes {
+  font-size: 2rem;
+}
 /*# sourceMappingURL=style.css.map */
