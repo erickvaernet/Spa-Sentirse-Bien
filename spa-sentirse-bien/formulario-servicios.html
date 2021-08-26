@@ -28,7 +28,44 @@
         <main>
             <div class="contenedor-centrador">
                 <div class="contenedor-contacto">
-                    <p>Formulario de servicios individuales</p>
+                    <form action="/registro" method="POST" class="form-serv-indiv">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" name="nombre" id="nombre">
+
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email">
+
+                        <div class="contenedor-select-serv">
+                            <div class="seccion-servicios">
+
+                                <label for= "seccion-servicio">Seleccione seccion del servicio:</label>
+                                <select name="seccion-servicio" id="seccion-servicio">
+                                <option value="masajes">Masajes</option>
+                                <option value="belleza">Belleza</option>
+                                <option value="punta-diamante">Tratamientos Faciales</option>
+                                <option value="tratamientos-corporales">Tratamientos Corporales</option>
+                                </select>
+                            </div>    
+                            <div class="servicio">                                
+                                <label for= "servicio">Seleccione el servicio:</label>
+                                <select name="servicio" id="servicio">
+                                <option value="masajes">Masajes</option>
+                                <option value="belleza">Belleza</option>
+                                <option value="punta-diamante">Tratamientos Faciales</option>
+                                <option value="tratamientos-corporales">Tratamientos Corporales</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <label for="consulta">Deje su consulta:</label>
+                        <textarea name="consulta" id="consulta"></textarea>
+
+                        <div class="contenedor-btn">
+                            <input type="submit" value="Enviar">
+                            <input type="reset" value="Resetear">
+                        </div>
+
+                    </form>
 
                     <div class="redes">
                         Seguinos en

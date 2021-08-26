@@ -1,0 +1,62 @@
+.form-serv-indiv{
+    display: flex;
+    flex-direction: column; 
+    color: black;
+    line-height: 2rem;
+    width: 50%;
+    
+    input{
+        height: 2.5rem;
+        font-size: 1.5rem;
+        color: black;
+        border-radius: 50px;
+        border-style: none;
+        text-indent: 1rem;
+    }
+    .contenedor-select-serv{
+        position: relative;        
+        display: flex;
+        flex-direction: row;
+        justify-content: center ;
+        align-items: center;
+        align-content: center;
+        gap:0rem;
+        .seccion-servicios{
+            width: 50%;
+        }
+        .servicio{
+            width: 50%;
+        }
+        select{
+            @extend input;
+            max-width: 100%;
+            option{            
+                color: black;
+            }
+        }        
+    }
+    textarea{
+        @extend input;
+        height: 20rem;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    .contenedor-btn{
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+
+        margin: 10px;
+        input{
+            width: 40%;
+            background-color: green;
+            border-style: solid;
+            border-color: red;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+
+    
+}

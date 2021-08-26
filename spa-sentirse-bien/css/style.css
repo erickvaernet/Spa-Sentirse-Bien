@@ -341,6 +341,92 @@ main .contenedor-centrador .contenedor-contacto .redes {
   margin-bottom: 20px;
 }
 
+.form-serv-indiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: black;
+  line-height: 2rem;
+  width: 50%;
+}
+
+.form-serv-indiv input, .form-serv-indiv .contenedor-select-serv select, .form-serv-indiv textarea {
+  height: 2.5rem;
+  font-size: 1.5rem;
+  color: black;
+  border-radius: 50px;
+  border-style: none;
+  text-indent: 1rem;
+}
+
+.form-serv-indiv .contenedor-select-serv {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  gap: 0rem;
+}
+
+.form-serv-indiv .contenedor-select-serv .seccion-servicios {
+  width: 50%;
+}
+
+.form-serv-indiv .contenedor-select-serv .servicio {
+  width: 50%;
+}
+
+.form-serv-indiv .contenedor-select-serv select {
+  max-width: 100%;
+}
+
+.form-serv-indiv .contenedor-select-serv select option {
+  color: black;
+}
+
+.form-serv-indiv textarea {
+  height: 20rem;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.form-serv-indiv .contenedor-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 1rem;
+  margin: 10px;
+}
+
+.form-serv-indiv .contenedor-btn input, .form-serv-indiv .contenedor-btn .contenedor-select-serv select, .form-serv-indiv .contenedor-select-serv .contenedor-btn select, .form-serv-indiv .contenedor-btn textarea {
+  width: 40%;
+  background-color: green;
+  border-style: solid;
+  border-color: red;
+}
+
+.form-serv-indiv .contenedor-btn input:hover, .form-serv-indiv .contenedor-btn .contenedor-select-serv select:hover, .form-serv-indiv .contenedor-select-serv .contenedor-btn select:hover, .form-serv-indiv .contenedor-btn textarea:hover {
+  cursor: pointer;
+}
+
 footer {
   text-align: center;
 }
