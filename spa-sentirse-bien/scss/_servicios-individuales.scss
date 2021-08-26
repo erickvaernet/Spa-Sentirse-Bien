@@ -1,0 +1,43 @@
+
+
+.contenedor-serv-ind{
+    display: flex;
+    flex-wrap: wrap;
+
+
+    .servicios-individuales{
+
+        background-color: rgba($color: #C4C4C4, $alpha: 0.5);
+        font-family: "Raleway";
+        .servicios-individuales-txt{
+            max-width: 45%;
+        }
+        h2{
+            color:black;
+            font-size: 2rem;
+        }
+        p{
+            @extend %p-serv;
+        }
+        dl{
+            dt{
+                @extend %p-serv;
+            }
+            dd{
+                @extend %p-serv;
+            }
+        }
+    }
+    .img-serv-ind{
+        background-image: url("../img/servicios/masajes-spa.jpg");
+        width: 45%;
+    }
+    .boton-servicios-indiv{
+        background-repeat: no-repeat;
+        height: 150px;
+    }
+}
+
+.boton-servicios-indiv{
+    background-image: url("../img/servicios/boton-info.svg");    
+}
