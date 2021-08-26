@@ -26,7 +26,12 @@
   background-image: url("../img/fondos-opc/fondo-servicios.jpg");
 }
 
-.contenedor-serv-ind .servicios-individuales p, .contenedor-serv-ind .servicios-individuales dl dt, .contenedor-serv-ind .servicios-individuales dl dd {
+.fondo-contacto {
+  background-image: url("../img/contacto/fondo.jpg");
+  height: 100vh;
+}
+
+.contenedor-serv-ind .servicios-individuales .serv-flex .servicios-individuales-txt p, .contenedor-serv-ind .servicios-individuales .serv-flex .servicios-individuales-txt dl dt, .contenedor-serv-ind .servicios-individuales .serv-flex .servicios-individuales-txt dl dd {
   font-size: 1.5rem;
   color: black;
 }
@@ -232,36 +237,108 @@ main .caja-servicios-banner .contenedor-aviso-adv p span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 10px;
 }
 
 .contenedor-serv-ind .servicios-individuales {
   background-color: rgba(196, 196, 196, 0.5);
+  width: 99%;
+  border-radius: 50px;
+}
+
+.contenedor-serv-ind .servicios-individuales .serv-flex {
+  padding: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.contenedor-serv-ind .servicios-individuales .serv-flex .servicios-individuales-txt {
+  max-width: 45%;
   font-family: "Raleway";
 }
 
-.contenedor-serv-ind .servicios-individuales .servicios-individuales-txt {
-  max-width: 45%;
-}
-
-.contenedor-serv-ind .servicios-individuales h2 {
+.contenedor-serv-ind .servicios-individuales .serv-flex .servicios-individuales-txt h2 {
   color: black;
   font-size: 2rem;
+  text-decoration: underline;
 }
 
-.contenedor-serv-ind .img-serv-ind {
+.contenedor-serv-ind .servicios-individuales .serv-flex .servicios-individuales-txt dl dd {
+  text-indent: 1rem;
+  /*line-height: 2.5rem;*/
+}
+
+.contenedor-serv-ind .servicios-individuales .serv-flex .img-serv-ind {
   background-image: url("../img/servicios/masajes-spa.jpg");
+  background-size: cover;
   width: 45%;
+  border-radius: 50px;
+  height: 600px;
 }
 
-.contenedor-serv-ind .boton-servicios-indiv {
+.contenedor-serv-ind .servicios-individuales .serv-flex .img-serv-grup {
+  background-image: url("../img/servicios/piedras-calientes.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 45%;
+  border-radius: 50px;
+  height: 200px;
+}
+
+.contenedor-serv-ind .servicios-individuales .boton-servicios-indiv {
   background-repeat: no-repeat;
+  background-position: center;
   height: 150px;
+  background-image: url("../img/servicios/boton-info.svg");
 }
 
-.boton-servicios-indiv {
-  background-image: url("../img/servicios/boton-info.svg");
+.contenedor-serv-ind .servicios-individuales .boton-servicios-grup {
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 150px;
+  background-image: url("../img/servicios/boton-proximamente.svg");
+}
+
+main .contenedor-centrador .contenedor-contacto {
+  margin: 100px auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 50%;
+  border-radius: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .contenedor-centrador .contenedor-contacto p {
+  width: 80%;
+  font-family: "Roboto",sans-serif;
+  font-size: 3rem;
+  margin: 5%;
+  line-height: 4rem;
+}
+
+main .contenedor-centrador .contenedor-contacto .redes {
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
 footer {

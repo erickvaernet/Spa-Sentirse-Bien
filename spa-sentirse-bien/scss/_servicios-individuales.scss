@@ -1,43 +1,71 @@
 
 
-.contenedor-serv-ind{
+.contenedor-serv-ind{    
     display: flex;
-    flex-wrap: wrap;
-
-
+    justify-content: center;
+    margin: 10px;
     .servicios-individuales{
-
-        background-color: rgba($color: #C4C4C4, $alpha: 0.5);
-        font-family: "Raleway";
-        .servicios-individuales-txt{
-            max-width: 45%;
-        }
-        h2{
-            color:black;
-            font-size: 2rem;
-        }
-        p{
-            @extend %p-serv;
-        }
-        dl{
-            dt{
-                @extend %p-serv;
+        background-color: rgba($color: #C4C4C4, $alpha: 0.5);  
+        width: 99%; 
+        border-radius: 50px;
+        
+        .serv-flex{
+            padding: 30px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            .servicios-individuales-txt{
+                max-width: 45%;
+                font-family: "Raleway";
+                h2{
+                    color:black;
+                    font-size: 2rem;
+                    text-decoration: underline
+                }
+                p{
+                    @extend %p-serv;
+                }
+                dl{
+                    dt{
+                        @extend %p-serv;
+                    }
+                    dd{
+                        @extend %p-serv;
+                        text-indent: 1rem;
+                        /*line-height: 2.5rem;*/
+                    }
+                }
             }
-            dd{
-                @extend %p-serv;
+            .img-serv-ind{
+                background-image: url("../img/servicios/masajes-spa.jpg");
+                background-size: cover;
+                width: 45%;
+                border-radius: 50px;
+                height: 600px;
+            }
+            .img-serv-grup{
+                background-image: url("../img/servicios/piedras-calientes.jpg");
+                background-size: cover;
+                background-position: center;
+                width: 45%;
+                border-radius: 50px;
+                height: 200px;
             }
         }
-    }
-    .img-serv-ind{
-        background-image: url("../img/servicios/masajes-spa.jpg");
-        width: 45%;
-    }
-    .boton-servicios-indiv{
-        background-repeat: no-repeat;
-        height: 150px;
+        
+        .boton-servicios-indiv{
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 150px;
+            background-image: url("../img/servicios/boton-info.svg");    
+        }
+        .boton-servicios-grup{
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 150px;
+            background-image: url("../img/servicios/boton-proximamente.svg");    
+        }
+       
     }
 }
 
-.boton-servicios-indiv{
-    background-image: url("../img/servicios/boton-info.svg");    
-}
