@@ -311,7 +311,7 @@ main .caja-servicios-banner .contenedor-aviso-adv p span {
 main .contenedor-centrador .contenedor-contacto {
   margin: 100px auto;
   background-color: rgba(0, 0, 0, 0.5);
-  width: 50%;
+  width: 100%;
   border-radius: 200px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -442,4 +442,5 @@ footer .servicios {
 footer .servicios i {
   color: black;
 }
+
 /*# sourceMappingURL=style.css.map */
