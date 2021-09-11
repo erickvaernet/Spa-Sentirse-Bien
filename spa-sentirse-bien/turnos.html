@@ -23,8 +23,43 @@
             </nav>            
         </header>
         <main>
-            <p style="font-size: 5rem; font-weight: 700; margin:21vh auto; height: 50vh;">Página en Progreso</p>
-        </main>
+                    <h1 id="titulo" <><b>Para pedir un turno por favor complete el siguiente formulario.</b></h1>
+                    <h2 id="subtitulo" >Todos los campos con * son obligatorios</h2>
+                    <form action="https://erioni9512.github.io/Spa-Sentirse-Bien/spa-sentirse-bien/" method="POST" >
+
+                        <label for="nombre">Nombre*</label>
+                        <input id="nombre" name="nombre" type="text" class="form" placeholder="Nombre">
+                        <br>
+                        <label for="apellido" >Apellido*</label>
+                        <input id= "apellido" name="apellido" type="text" placeholder="Apellido">
+                        <br>
+                        <label for="dni">DNI*</label>
+                        <input id="dni" name="dni" type="text" placeholder="DNI">
+                        <br>
+                        <label for="telefono">Telefono*</label>
+                        <input type="text" name="telefono" id="telefono" placeholder="Telefono">
+                        <br>
+                        <label for="email" >Email*</label>
+                        <input type="text" name="email" id="email" placeholder="Email">
+                        <br>
+                        <!--<p>Desea ser parte de nuestro newsletter para recibir informacion acer de nuevos servicios y cupones de descuento</p> -->
+                        <label for="newsletter">Desea ser parte de nuestro <b>newsletter</b> para recibir informacion acerca de nuevos servicios y <b>cupones de descuento</b></label>
+                        <br>
+                        <label for="sexo">Sexo</label>
+                        <input type="radio" name="masculino" id="masculino" value="Varon"> Varon<br>
+                        <input type="radio" name="femenino" id="femenino" value="Mujer"> Mujer <br>
+                        <input type="submit"  value="Enviar" > <input type="reset">
+                        <!--
+                             <br>
+                        <label for="newsletter"><b>Ingresa tu email</b></label>
+                        <input  type="text" name="newsletter" id="newsletter" placeholder="Ingresa tu email para ser parte de nuestro newsletter">
+                        
+                        -->
+      
+                    </form>
+                        
+        </main>       
+         
         <footer>
             <div class="redes">
                 Seguinos en 
