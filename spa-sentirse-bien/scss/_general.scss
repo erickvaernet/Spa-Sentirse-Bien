@@ -11,6 +11,11 @@
     box-sizing: border-box;
     font-family: "Roboto",sans-serif;
     color: #FFFFFF;
+
+}
+
+textarea {
+    resize: none;
 }
 
 /*FondoS*/
@@ -23,4 +28,5 @@
 .fondo-servicios{background-image: url("../img/fondos-opc/fondo-servicios.jpg");}
 
 .fondo-contacto{background-image: url("../img/contacto/fondo.jpg");
-height: 100vh;}
+    
+}

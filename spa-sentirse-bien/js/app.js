@@ -3,7 +3,7 @@ let select2= document.getElementById("servicio");
 
 select1.addEventListener("change",()=>{
     if(select1.value==="masajes"){
-        sobrescribirOpciones(select2,"anti-stress", "descontracturante","con piedras calientes","circulatorios");
+        sobrescribirOpciones(select2,"Anti-Stress", "Descontracturante","Masajes con Piedras Calientes","Circulatorios");
     }
     else if(select1.value==="belleza"){
         sobrescribirOpciones(select2,"Lifting de pestaña", "Depilacion facial","Belleza de Manos y Pies");
