@@ -59,11 +59,72 @@
             height: 150px;
             background-image: url("../img/servicios/boton-info.svg");    
         }
+
+        .boton-serv-indiv{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            hr{
+                width: 574px;
+                border: 6px dashed #29F031;
+                transform: matrix(1, 0, 0, 1, 0, 0);
+                width: 40%;
+            }
+            .button {
+                font-family: "Raleway",sans-serif;
+                font-weight: 500;
+                color: #000000;
+                font-size: 4rem;
+                padding: 10px;
+                text-decoration: none;
+                -webkit-border-radius: 50px;
+                -moz-border-radius: 50px;
+                border-radius: 50px;
+                border: solid #F3EA00 4px;
+                background: #7CE43C;
+            }
+            .button:hover {
+                background: #5eb627;
+                cursor: pointer;                
+            }
+        }
+
         .boton-servicios-grup{
             background-repeat: no-repeat;
             background-position: center;
             height: 150px;
             background-image: url("../img/servicios/boton-proximamente.svg");    
+        }
+        .boton-serv-grup{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            hr{
+                width: 574px;
+                border: 6px dashed #4E8F26;
+                transform: matrix(1, 0, 0, 1, 0, 0);
+                width: 40%;
+            }
+            .button {
+                font-family: "Raleway",sans-serif;
+                font-weight: 500;
+                color: #000000;
+                font-size: 4rem;
+                padding: 10px;
+                text-decoration: none;
+                -webkit-border-radius: 50px;
+                -moz-border-radius: 50px;
+                border-radius: 50px;
+                border: solid #F3EA00 4px;
+                background: #4E8F26;
+            }
+            .button:hover {
+            background: #4E8F26;
+            }
         }
        
     }

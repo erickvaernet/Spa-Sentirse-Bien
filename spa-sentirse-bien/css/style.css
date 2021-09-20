@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rochester&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;1,300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
 /*Genreal*/
 * {
   margin: 0;
@@ -332,11 +333,94 @@ main .contenedor-sexos {
   background-image: url("../img/servicios/boton-info.svg");
 }
 
+.contenedor-serv-ind .servicios-individuales .boton-serv-indiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 20px;
+}
+
+.contenedor-serv-ind .servicios-individuales .boton-serv-indiv hr {
+  width: 574px;
+  border: 6px dashed #29F031;
+  -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
+          transform: matrix(1, 0, 0, 1, 0, 0);
+  width: 40%;
+}
+
+.contenedor-serv-ind .servicios-individuales .boton-serv-indiv .button {
+  font-family: "Raleway",sans-serif;
+  font-weight: 500;
+  color: #000000;
+  font-size: 4rem;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 50px;
+  border: solid #F3EA00 4px;
+  background: #7CE43C;
+}
+
+.contenedor-serv-ind .servicios-individuales .boton-serv-indiv .button:hover {
+  background: #5eb627;
+  cursor: pointer;
+}
+
 .contenedor-serv-ind .servicios-individuales .boton-servicios-grup {
   background-repeat: no-repeat;
   background-position: center;
   height: 150px;
   background-image: url("../img/servicios/boton-proximamente.svg");
+}
+
+.contenedor-serv-ind .servicios-individuales .boton-serv-grup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 20px;
+}
+
+.contenedor-serv-ind .servicios-individuales .boton-serv-grup hr {
+  width: 574px;
+  border: 6px dashed #4E8F26;
+  -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
+          transform: matrix(1, 0, 0, 1, 0, 0);
+  width: 40%;
+}
+
+.contenedor-serv-ind .servicios-individuales .boton-serv-grup .button {
+  font-family: "Raleway",sans-serif;
+  font-weight: 500;
+  color: #000000;
+  font-size: 4rem;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 50px;
+  border: solid #F3EA00 4px;
+  background: #4E8F26;
+}
+
+.contenedor-serv-ind .servicios-individuales .boton-serv-grup .button:hover {
+  background: #4E8F26;
 }
 
 main .contenedor-centrador .contenedor-contacto {
