@@ -1,3 +1,14 @@
+<?php
+    $servidor= "localhost";
+    $usuario="id17396697_root";
+    $clave="*Erick951222";
+    $baseDeDatos="id17396697_spa";
+
+    $enlace=mysqli_connect($servidor,$usuario,$clave,$baseDeDatos);
+    if(!$enlace){
+        echo "ERROR EN LA CONEXION AL SERVIDOR";
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -36,25 +47,24 @@
                         <input id= "apellido" name="apellido" type="text" placeholder="Apellido" required>
                         
                         <label for="dni">DNI*</label>
-                        <input id="dni" name="dni" type="text" placeholder="DNI" required>
+                        <input id="dni" name="dni" type="number" placeholder="DNI" required>
                         
                         <label for="telefono">Teléfono*</label>
                         <input type="text" name="telefono" id="telefono" placeholder="Telefono" required>
                         
-                        <label for="email" >Email</label>
-                        <input type="text" name="email" id="email" placeholder="Email" >
+                        <label for="email" >Email*</label>
+                        <input type="text" name="email" id="email" placeholder="Email" required>
                         <!--<p>Desea ser parte de nuestro newsletter para recibir informacion acer de nuevos servicios y cupones de descuento</p> -->                        
                         
                          
                         <div class="contenedor-sexos">   
                             <span style="text-decoration: underline;">Sexo*:</span>      
-                            <input type="radio" name="sexo" id="masculino" value="varon" required> <label for="masculino">Hombre</label>
-                            <input type="radio" name="sexo" id="femenino" value="mujer" required> <label for="femenino">Mujer</label> 
+                            <input type="radio" name="sexo" id="masculino" value="masculino" required> <label for="masculino">Hombre</label>
+                            <input type="radio" name="sexo" id="femenino" value="femenino" required> <label for="femenino">Mujer</label> 
                         </div>
                         <label for="fecha">Fecha y hora del turno*</label>        
-                        <input type="datetime-local" id="fecha" name="fecha" required="required" min="<?php echo date('Y-m-d\TH-i');?>">   
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-                        
+                        <input type="datetime-local" id="fecha" name="fecha" required="required" >   
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>                        
                         <script>
                         $( document ).ready(function() {
                         
@@ -65,6 +75,8 @@
                         
                             var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
                             $("#fecha").val(today);
+                            const cale= document.getElementById("fecha");
+                            cale.setAttribute("min",today+"T00:00");
                         });
 
                         </script>
@@ -72,17 +84,7 @@
                             <input type="submit" value="Enviar" name="enviar">
                             <input type="reset" value="Resetear">
                         </div>
-
-                        <!-- 
-                            <input type="submit"  value="Enviar" > <input type="reset">
-                        -->
-
-                        <!--
-                        <label for="newsletter">Desea ser parte de nuestro <b>newsletter</b> para recibir informacion acerca de nuevos servicios y <b>cupones de descuento</b></label>
-                             
-                        <label for="newsletter"><b>Ingresa tu email</b></label>
-                        <input  type="text" name="newsletter" id="newsletter" placeholder="Ingresa tu email para ser parte de nuestro newsletter">
-                        -->      
+                          
                     </form>
                 </div>
             </div>
@@ -96,9 +98,31 @@
                 <a href="https://www.twitter.com/Spa-Sentirse-Bien" target="_blank"><i class="fab fa-twitter"></i></a>
                 <a href="https://www.instagram.com/Spa-Sentirse-Bien" target="_blank"><i class="fab fa-instagram"></i></a>
             </div>            
-        </footer>
-        
-    </div>    
-    
+        </footer>        
+    </div>            
 </body>
 </html>
+
+<?php
+    if(isset($_POST["enviar"])){
+        $nombre=$_POST["nombre"];
+        $apellido=$_POST["apellido"];
+        $dni=intval($_POST["dni"]);
+        $telefono=$_POST["telefono"];
+        $email=$_POST["email"];
+        $sex_aux=$_POST["sexo"];
+        if($sex_aux=="femenino"){
+            $sexo=1;
+        }else{
+            $sexo=0;
+        }
+        $fecha_hora_turno= str_replace("T", " ", $_POST["fecha"] ).":00";
+
+        $insertar_datos= "INSERT INTO Turnos (nombre,apellido,dni,telefono,email,sexo,fecha_hora_turno) VALUES('$nombre','$apellido','$dni','$telefono','$email','$sexo','$fecha_hora_turno')";
+        $ejecutar_insertar= mysqli_query($enlace,$insertar_datos);
+        
+        if(!$ejecutar_insertar){
+         echo "ERROR EN CONSULTA";
+        }
+    }
+?>
