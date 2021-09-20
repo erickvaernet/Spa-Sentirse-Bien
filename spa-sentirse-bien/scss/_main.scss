@@ -10,6 +10,7 @@ main{
             font-family: "Rochester";
             font-weight: 400;
         }
+        
     }   
 
     .presentacion{
@@ -136,4 +137,25 @@ main{
         }
     }    
 
+    /*Turnos*/
+    .titulo-turnos{
+        margin-top: 10px;
+        color: white;
+    }
+
+    .contenedor-sexos{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+        align-content: center;
+        gap: 10px;
+        
+    }
+
 }
+
+
+

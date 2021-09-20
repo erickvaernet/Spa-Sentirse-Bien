@@ -23,32 +23,55 @@
             </nav>            
         </header>
         <main>
-                    <h1 id="titulo" <><b>Para pedir un turno por favor complete el siguiente formulario.</b></h1>
-                    <h2 id="subtitulo" >Todos los campos con * son obligatorios</h2>
-                    <form action="#" method="POST" >
-                        <br>
+            <div class="contenedor-centrador">
+                <div class="contenedor-contacto">
+                    <h1 class="titulo-turnos" style="margin-bottom: 10px; text-decoration: underline;">Para pedir un turno por favor <br>complete el siguiente formulario.</h1>
+                    <h2 class="subtitulo" style="font-size: 1rem;" >Todos los campos con * son obligatorios</h2>
+                    <form action="#" method="POST" class="form-serv-indiv" >
+                        
                         <label for="nombre">Nombre*</label>
-                        <input id="nombre" name="nombre" type="text" class="form" placeholder="Nombre">
-                        <br>
+                        <input id="nombre" name="nombre" type="text" class="form" placeholder="Nombre" required>
+                        
                         <label for="apellido" >Apellido*</label>
-                        <input id= "apellido" name="apellido" type="text" placeholder="Apellido">
-                        <br>
+                        <input id= "apellido" name="apellido" type="text" placeholder="Apellido" required>
+                        
                         <label for="dni">DNI*</label>
-                        <input id="dni" name="dni" type="text" placeholder="DNI">
-                        <br>
+                        <input id="dni" name="dni" type="text" placeholder="DNI" required>
+                        
                         <label for="telefono">Teléfono*</label>
-                        <input type="text" name="telefono" id="telefono" placeholder="Telefono">
-                        <br>
-                        <label for="email" >Email*</label>
-                        <input type="text" name="email" id="email" placeholder="Email">
+                        <input type="text" name="telefono" id="telefono" placeholder="Telefono" required>
+                        
+                        <label for="email" >Email</label>
+                        <input type="text" name="email" id="email" placeholder="Email" >
                         <!--<p>Desea ser parte de nuestro newsletter para recibir informacion acer de nuevos servicios y cupones de descuento</p> -->                        
-                        <br><br>
-                        <label for="sexo">Sexo*</label>
-                        <br>
-                        <input type="radio" name="masculino" id="masculino" value="Varón"> Varón<br>
-                        <input type="radio" name="femenino" id="femenino" value="Mujer"> Mujer <br>
-                        <button type="submit">Enviar</button>
-                        <button type="reset">Reset</button>
+                        
+                         
+                        <div class="contenedor-sexos">   
+                            <span style="text-decoration: underline;">Sexo*:</span>      
+                            <input type="radio" name="sexo" id="masculino" value="varon" required> <label for="masculino">Hombre</label>
+                            <input type="radio" name="sexo" id="femenino" value="mujer" required> <label for="femenino">Mujer</label> 
+                        </div>
+                        <label for="fecha">Fecha y hora del turno*</label>        
+                        <input type="datetime-local" id="fecha" name="fecha" required="required" min="<?php echo date('Y-m-d\TH-i');?>">   
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                        
+                        <script>
+                        $( document ).ready(function() {
+                        
+                            var now = new Date();
+                        
+                            var day = ("0" + now.getDate()).slice(-2);
+                            var month = ("0" + (now.getMonth() + 1)).slice(-2);
+                        
+                            var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+                            $("#fecha").val(today);
+                        });
+
+                        </script>
+                        <div class="contenedor-btn">
+                            <input type="submit" value="Enviar" name="enviar">
+                            <input type="reset" value="Resetear">
+                        </div>
 
                         <!-- 
                             <input type="submit"  value="Enviar" > <input type="reset">
@@ -56,14 +79,13 @@
 
                         <!--
                         <label for="newsletter">Desea ser parte de nuestro <b>newsletter</b> para recibir informacion acerca de nuevos servicios y <b>cupones de descuento</b></label>
-                             <br>
+                             
                         <label for="newsletter"><b>Ingresa tu email</b></label>
                         <input  type="text" name="newsletter" id="newsletter" placeholder="Ingresa tu email para ser parte de nuestro newsletter">
-                        -->
-      
+                        -->      
                     </form>
-                    <br>
-                    <h1><b>PAGINA EN PROGRESO..</b></h1>
+                </div>
+            </div>
                         
         </main>       
 

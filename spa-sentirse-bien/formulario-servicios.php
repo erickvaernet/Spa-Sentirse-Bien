@@ -30,7 +30,7 @@
         <header>
             <nav>
                 <ul>
-                    <li><a href="./index.html">Inicio</a< /li>
+                    <li><a href="./index.html">Inicio</a></li>
                     <li><a href="./servicios.html">Servicios</a></li>
                     <li><a href="./turnos.html">Turnos</a></li>
                     <li><a href="./contacto.html">Contacto</a></li>
@@ -83,13 +83,13 @@
         $tema=$_POST["tema_consulta"];
         $texto_consulta=$_POST["texto_consulta"];
 
-        $insertar_datos= "INSERT INTO Consultas (nombre,email,tema_consulta,texto_consulta) VALUES ('$nombre','$email','$tema','$texto_consulta')";
-        $ejecutar_insertar= mysqli_master_query($enlace,$insertar_datos);
-
+        $insertar_datos= "INSERT INTO Consultas (nombre,email,tema_consulta,texto_consulta) VALUES('$nombre','$email','$tema','$texto_consulta')";
+        $ejecutar_insertar= mysqli_query($enlace,$insertar_datos);
+        
         if(!$ejecutar_insertar){
-            echo "ERROR EN CONSULTA";
-            echo "ERROR EN CONSULTA";
-            echo "ERROR EN CONSULTA";
+         echo "ERROR EN CONSULTA";
+         echo "ERROR EN CONSULTA";
+         echo "ERROR EN CONSULTA";
         }
     }
     

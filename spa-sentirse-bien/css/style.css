@@ -83,6 +83,7 @@ main {
   text-align: center;
   /*INDEX*/
   /*SERVICIOS*/
+  /*Turnos*/
 }
 
 main h1 {
@@ -234,6 +235,33 @@ main .caja-servicios-banner .contenedor-aviso-adv p {
 main .caja-servicios-banner .contenedor-aviso-adv p span {
   color: black;
   text-decoration: underline;
+}
+
+main .titulo-turnos {
+  margin-top: 10px;
+  color: white;
+}
+
+main .contenedor-sexos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  gap: 10px;
 }
 
 .contenedor-serv-ind {
