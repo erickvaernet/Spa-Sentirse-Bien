@@ -34,6 +34,7 @@
                     <li><a href="./servicios.html">Servicios</a></li>
                     <li><a href="./turnos.php">Turnos</a></li>
                     <li><a href="./contacto.html">Contacto</a></li>
+                    <li><a href="./nosotros.html">Nosotros</a></li>  
                 </ul>
             </nav>
         </header>
