@@ -85,7 +85,6 @@ main {
   /*INDEX*/
   /*SERVICIOS*/
   /*Turnos*/
-  /*Nosotros*/
 }
 
 main h1 {
@@ -264,23 +263,6 @@ main .contenedor-sexos {
   -ms-flex-line-pack: center;
       align-content: center;
   gap: 10px;
-}
-
-main .contenedor-centrador .contenedor-contacto p {
-  width: 80%;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 2rem;
-  margin: 5%;
-  line-height: 4rem;
-}
-
-main .nosotros {
-  color: #FA03E6;
-  margin-top: 50px;
-  margin-right: 250px;
-  letter-spacing: 5px;
-  font-size: 50px;
-  font-family: fantasy;
 }
 
 .contenedor-serv-ind {
@@ -558,6 +540,19 @@ main .contenedor-centrador .contenedor-contacto .redes {
 
 .form-serv-indiv .contenedor-btn input:hover, .form-serv-indiv .contenedor-btn .contenedor-select-serv select:hover, .form-serv-indiv .contenedor-select-serv .contenedor-btn select:hover, .form-serv-indiv .contenedor-btn textarea:hover {
   cursor: pointer;
+}
+
+.form-serv-indiv select {
+  height: 2.5rem;
+  font-size: 1.5rem;
+  color: black;
+  border-radius: 50px;
+  border-style: none;
+  text-indent: 1rem;
+}
+
+.form-serv-indiv option {
+  color: black;
 }
 
 footer {
