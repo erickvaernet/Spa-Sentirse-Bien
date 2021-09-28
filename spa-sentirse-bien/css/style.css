@@ -570,4 +570,111 @@ footer .servicios {
 footer .servicios i {
   color: black;
 }
+
+@media (max-width: 480px) {
+  header nav ul {
+    gap: 10px;
+  }
+  header nav ul li {
+    color: red;
+    font-size: 1rem !important;
+  }
+  main .presentacion {
+    max-width: 100%;
+  }
+  main .presentacion p {
+    font-size: 1.8rem;
+    line-height: 2rem;
+    color: black;
+  }
+  main ul {
+    padding: 10px;
+    gap: 10px;
+  }
+  main ul li {
+    font-size: 1rem !important;
+  }
+  main .contenedor-contacto {
+    padding: 50px 0 0 0;
+    width: 90% !important;
+  }
+  main .contenedor-contacto p {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+  }
+  main .contenedor-contacto iframe {
+    width: 80% !important;
+    height: 250px !important;
+    margin-bottom: 10px;
+  }
+  main .nosotros {
+    text-align: center;
+    margin: auto;
+  }
+  .redes {
+    position: relative;
+    top: 50px;
+  }
+  .caja-servicios-banner {
+    width: auto !important;
+    height: auto !important;
+    text-align: center;
+  }
+  .caja-servicios-banner .contenedor-aviso-adv {
+    position: static !important;
+    width: 98% !important;
+    margin: auto;
+  }
+  .caja-servicios-banner .contenedor-aviso-adv h3 {
+    width: auto !important;
+  }
+  .caja-servicios-banner .contenedor-aviso-adv p {
+    width: auto !important;
+  }
+  .contenedor-serv-ind .serv-flex {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    -ms-flex-wrap: nowrap !important;
+        flex-wrap: nowrap !important;
+  }
+  .contenedor-serv-ind .serv-flex .servicios-individuales-txt {
+    max-width: 99% !important;
+    text-align: center;
+  }
+  .contenedor-serv-ind .serv-flex .img-serv-ind {
+    margin-top: 20px  !important;
+    background-image: url(https://promedicas.mx/toluca/wp-content/uploads/2021/05/spa-holistico-beneficios.jpg) !important;
+    width: 90% !important;
+    height: 200px !important;
+  }
+  .contenedor-serv-ind .boton-servicios-indiv {
+    background-size: 830px !important;
+    position: relative;
+    bottom: 20px;
+  }
+  .contenedor-serv-ind .boton-servicios-grup {
+    background-size: 830px !important;
+    position: relative;
+    bottom: 20px;
+  }
+  form {
+    width: 80% !important;
+  }
+  form .contenedor-btn {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    text-align: center !important;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  form .contenedor-btn input, form .contenedor-btn .form-serv-indiv .contenedor-select-serv select, .form-serv-indiv .contenedor-select-serv form .contenedor-btn select, form .contenedor-btn .form-serv-indiv textarea, .form-serv-indiv form .contenedor-btn textarea {
+    width: 60% !important;
+    text-align: center;
+  }
+}
 /*# sourceMappingURL=style.css.map */

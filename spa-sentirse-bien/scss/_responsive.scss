@@ -1,0 +1,113 @@
+@media (max-width: 480px){
+    header{
+        nav{
+            ul{
+                li{
+                    color: red;
+                    font-size: 1rem !important;
+                 }
+                gap:10px;                  
+             }
+        }
+        
+    }
+    main{
+        .presentacion{
+            max-width: 100%;
+            p{
+                font-size: 1.8rem;
+                line-height: 2rem;
+                color: black;
+            }
+        } 
+        ul{
+            padding: 10px;
+            
+            li{               
+                
+                font-size: 1rem !important;
+             }
+            gap:10px;                  
+        }
+        
+        .contenedor-contacto{
+            padding: 50px 0 0 0;
+            width: 90% !important;            
+            p{               
+                font-size: 1.5rem !important; 
+                line-height: 2rem !important;
+            }           
+            iframe{
+                width: 80% !important;
+                height: 250px !important;
+                margin-bottom: 10px;
+            } 
+            ;
+        }
+        .nosotros{
+            text-align: center;
+            margin:auto;
+        }
+    }
+    .redes{    
+        position: relative;
+        top: 50px
+    }
+    .caja-servicios-banner{
+        width: auto !important;
+        height: auto !important;
+        text-align: center;
+        .contenedor-aviso-adv{
+            position: static !important;
+            width: 98% !important;
+            h3{
+                width: auto !important;
+            }
+            p{
+                width: auto !important;
+            }
+            margin: auto;
+        }
+    }
+    .contenedor-serv-ind{
+        .serv-flex{
+            flex-direction: column !important;
+            flex-wrap: nowrap !important;
+
+            .servicios-individuales-txt{
+                max-width: 99% !important;
+                text-align: center;                
+            }
+            .img-serv-ind{
+                margin-top: 20px  !important;
+                background-image: url(https://promedicas.mx/toluca/wp-content/uploads/2021/05/spa-holistico-beneficios.jpg) !important;
+                width: 90% !important;
+                height: 200px !important;
+            }
+        }
+        .boton-servicios-indiv{            
+            background-size: 830px !important ;
+            position: relative;
+            bottom: 20px;
+        }
+        .boton-servicios-grup{            
+            background-size: 830px !important ;
+            position: relative;
+            bottom: 20px;
+        }
+    }
+    
+    form{
+        width: 80% !important;
+        .contenedor-btn{
+            flex-direction: column !important;
+            text-align: center !important;
+            align-items: center;
+            input{
+                width: 60% !important;
+                text-align: center;
+            }
+        }
+    }
+    
+}
