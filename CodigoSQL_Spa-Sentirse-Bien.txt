@@ -1,0 +1,55 @@
+de izq a der
+y de arriba hacia abajo direccion MER
+
+INSERT INTO `Consultas` (nombre,apellido,tema_consulta,consulta) VALUES ('Erick','Vaernet','TEMA1',"Quiero Consultar esto");
+CREATE TABLE Consultas (
+    id_consulta int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nombre varchar(60) not null,
+    email varchar(80) not null,
+    tema_consulta varchar(80) not null,
+    texto_consulta varchar(21000) not null   
+);
+
+CREATE TABLE Turnos (
+    id_turno int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nombre varchar(60) not null,
+    apellido varchar(60) not null,
+    dni int not null,
+    telefono varchar(80) not null,
+    email varchar(80) not null,
+    sexo tinyint(1) not null,
+    fecha_hora_turno datetime not null
+);
+
+CREATE TABLE Servicios (
+    id_servicio int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nombre varchar(60) not null
+);
+
+CREATE TABLE Turnos (
+    id_turno int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nombre varchar(60) not null,
+    apellido varchar(60) not null,
+    dni int not null,
+    telefono varchar(80) not null,
+    email varchar(80) not null,
+    id_servicio int not null,
+    sexo tinyint(1) not null,
+    fecha_hora_turno datetime not null,
+    FOREIGN KEY(id_servicio) REFERENCES Servicios(id_servicio)
+);
+
+INSERT INTO Servicios (nombre) VALUES ("Masajes Anti-stress");
+INSERT INTO Servicios (nombre) VALUES ("Masajes Descontracturantes");
+INSERT INTO Servicios (nombre) VALUES ("Masajes con piedras calientes");
+INSERT INTO Servicios (nombre) VALUES ("Masajes Circulatorios");
+INSERT INTO Servicios (nombre) VALUES ("Lifting de pestaña");
+INSERT INTO Servicios (nombre) VALUES ("Depilación Facial");
+INSERT INTO Servicios (nombre) VALUES ("Belleza de manos y pies");
+INSERT INTO Servicios (nombre) VALUES ("Micro exfoliación facial con punta de diamante");
+INSERT INTO Servicios (nombre) VALUES ("Limpieza facial profunda + Hidratación");
+INSERT INTO Servicios (nombre) VALUES ("Crio frecuencia facial con efecto lifting");
+INSERT INTO Servicios (nombre) VALUES ("VelaSlim");
+INSERT INTO Servicios (nombre) VALUES ("DermoHealth");
+INSERT INTO Servicios (nombre) VALUES ("Crio frecuencia corporal con efecto lifting");
+INSERT INTO Servicios (nombre) VALUES ("Ultracavitación");
