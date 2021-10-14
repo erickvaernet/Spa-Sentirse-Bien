@@ -100,11 +100,18 @@ if (!$enlace) {
                                 cale.setAttribute("min", today + "T00:00");
                             });
                         </script>
+
+                        <div class="contenedor-sexos">
+                            <span style="text-decoration: underline;">Método de págo*:</span>
+                            <input type="radio" name="metodo-pago" id="tarjeta" value="tarjeta" required> <label for="tarjeta">Tarjeta</label>
+                            <input type="radio" name="metodo-pago" id="efectivo" value="efectivo" required> <label for="efectivo">Efectivo</label>
+                        </div>
+                        
                         <div class="contenedor-btn">
                             <input id="enviar" type="submit" value="Enviar" name="enviar">
                             <input type="reset" value="Resetear">
                         </div>
-
+                        <div id="form-tarjeta"></div>
                     </form>
                 </div>
             </div>
@@ -121,6 +128,7 @@ if (!$enlace) {
         </footer>
     </div>    
     <script src="./js/validar-turnos.js"></script>
+    <script src="./js/ingreso-datos-tarjeta.js"></script>
 </body> 
 </html>
 

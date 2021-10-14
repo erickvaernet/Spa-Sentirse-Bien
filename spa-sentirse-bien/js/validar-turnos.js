@@ -14,23 +14,25 @@ btonEnviar.addEventListener("click",function (event){
     array_errores=[];
 
     //validamos Nombre
-    contieneSoloLetras(nombreF.value)  ? "":array_errores.push("Solo se pueden usar letras en el campo nombre");
+    contieneSoloLetras(nombreF.value)  ? "":array_errores.push("-Solo se pueden usar letras en el campo nombre");
     //validamos Apellido
-    contieneSoloLetras(apellidoF.value) ? "":array_errores.push("Solo se pueden usar letras en el campo apellido");
+    contieneSoloLetras(apellidoF.value) ? "":array_errores.push("-Solo se pueden usar letras en el campo apellido");
 
     //validamos DNI
-    contieneSoloNumeros(dniF.value) ? "":array_errores.push("Solo se pueden usar numeros en el campo dni");
+    contieneSoloNumeros(dniF.value) ? "":array_errores.push("-Solo se pueden usar numeros en el campo dni");
     //validamos Telefono
-    contieneSoloNumeros(telefonoF.value) ? "":array_errores.push("Solo se pueden usar numeros en el campo telefono");
+    contieneSoloNumeros(telefonoF.value) ? "":array_errores.push("-Solo se pueden usar numeros en el campo telefono");
     
     //validar email
-    mailValido(emailF.value) ? "":array_errores.push("Complete el campo de email, con un email valido (Al menos debe contener un @ y .)");
+    mailValido(emailF.value) ? "":array_errores.push("-Complete el campo de email, con un email valido (Al menos debe contener un @ y .)");
 
     //validar servicios
-    valorServicioValido(servicioF)? "":array_errores.push("Seleccione un servicio válido para realizar el turno");
+    valorServicioValido(servicioF)? "":array_errores.push("-Seleccione un servicio válido para realizar el turno");
 
+    /*Si el arreglo de errores no contiene ningun error, se envia el formulario,sino se genera un reporte de errores
+    que se vera por encima del formulario*/
     array_errores.length == 0 ? this.submit():generarReporteDeErrores(array_errores,this) ;
-    //array_errores.length == 0 ? prompt("si"):prompt("No") ;
+    
 });
 
 function contieneSoloLetras(valor){    
@@ -50,15 +52,16 @@ function mailValido(valor){
 
 function valorServicioValido(elementoServicio){    
     let valor= elementoServicio.value;
-    return (valor>0 && valor<elementoServicio.lastElementChild.value);
+    return (valor>0 && valor<=elementoServicio.lastElementChild.value);
 }
 
 function generarReporteDeErrores(array_errores,formulario)
 {    
     const divErrores= document.querySelector("#errores");
-    let erroresString;
+    divErrores.classList.add("lista-errores");
+    let erroresString="";
     while(array_errores.length>0){
-        erroresString+="<div>"+array_errores.pop()+"<div>";
+        erroresString+="<div class='error'>"+array_errores.shift()+"<div>";
     }    
     divErrores.innerHTML= erroresString;
     /*

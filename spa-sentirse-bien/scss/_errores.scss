@@ -1,0 +1,13 @@
+.lista-errores{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: rgba(189, 19, 19,0.8);
+    border-radius: 50px;
+    margin: 15px 0px 10px 0px;
+    padding: 10px;
+}
+.error{
+    font-weight: bold; 
+}
