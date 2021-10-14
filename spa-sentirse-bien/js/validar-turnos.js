@@ -2,8 +2,7 @@ const formulario = document.querySelector("form");
 const btonEnviar = document.getElementById("enviar");
 const radioBtnTarjeta= document.getElementById("tarjeta");
 
-btonEnviar.addEventListener("click",function (event){
-    event.preventDefault();
+btonEnviar.addEventListener("click",function (event){   
 
     const nombreF= document.querySelector("#nombre");
     const apellidoF= document.querySelector("#apellido");
@@ -31,18 +30,26 @@ btonEnviar.addEventListener("click",function (event){
     //validar servicios
     valorServicioValido(servicioF)? "":array_errores.push("-Seleccione un servicio válido para realizar el turno");
 
-    //validar tarjeta en caso de estar seleccionada
-    if(radioBtnTarjeta.checked){
-        const nombreTarjeta = document.getElementById("");
-        const nombreTarjeta = document.getElementById("");
-        const nombreTarjeta = document.getElementById("");
-        const nombreTarjeta = document.getElementById("");
-
+    //validar campos de tarjeta en caso de estar seleccionada
+    
+    if(radioBtnTarjeta.ariaChecked=="true"){
+        const nombreTarjeta = document.getElementById("nombre-tarjeta");
+        const numeroTarjeta = document.getElementById("numero-tarjeta");
+        const vencimientoTarjeta = document.getElementById("vencimiento-tarjeta");
+        const codigoTarjeta = document.getElementById("codigo-tarjeta");
+        alert("a");
+        contieneSoloLetras(nombreTarjeta)? "": array_errores.push("-El nombre indicado en la tarjeta solo puede contener letras");
+        contieneSoloNumeros(numeroTarjeta)? "": array_errores.push("-El campo de número de tarjeta solo puede contener números");
+        noContieneLetras(vencimientoTarjeta)? "": array_errores.push("-El campo de vencimiento de la tarjeta nó puede contener letras");
+        contieneSoloNumeros(codigoTarjeta)? "": array_errores.push("-El campo de código de tarjeta solo puede contener números");
     }
 
     /*Si el arreglo de errores no contiene ningun error, se envia el formulario,sino se genera un reporte de errores
     que se vera por encima del formulario*/
-    array_errores.length == 0 ? this.submit():generarReporteDeErrores(array_errores,this) ;
+    if(array_errores.length != 0 ){
+        event.preventDefault();
+        generarReporteDeErrores(array_errores,this);
+    }
     
 });
 
@@ -50,6 +57,11 @@ function contieneSoloLetras(valor){
     const regexSoloLetras = /^[A-Z]*$/i;
     return regexSoloLetras.test(valor);    
 }
+
+function noContieneLetras(valor){
+    return !contieneSoloLetras(valor);   
+}
+
 function contieneSoloNumeros(valor){
     const regexSoloLetras = /^[0-9]*$/;
     return regexSoloLetras.test(valor);    
