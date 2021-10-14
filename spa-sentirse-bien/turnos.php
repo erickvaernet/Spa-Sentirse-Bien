@@ -105,13 +105,12 @@ if (!$enlace) {
                             <span style="text-decoration: underline;">Método de págo*:</span>
                             <input type="radio" name="metodo-pago" id="tarjeta" value="tarjeta" required> <label for="tarjeta">Tarjeta</label>
                             <input type="radio" name="metodo-pago" id="efectivo" value="efectivo" required> <label for="efectivo">Efectivo</label>
-                        </div>
-                        
+                        </div>                       
+
                         <div class="contenedor-btn">
                             <input id="enviar" type="submit" value="Enviar" name="enviar">
                             <input type="reset" value="Resetear">
-                        </div>
-                        <div id="form-tarjeta"></div>
+                        </div>                        
                     </form>
                 </div>
             </div>

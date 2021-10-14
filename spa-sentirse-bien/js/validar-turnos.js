@@ -1,5 +1,7 @@
 const formulario = document.querySelector("form");
 const btonEnviar = document.getElementById("enviar");
+const radioBtnTarjeta= document.getElementById("tarjeta");
+
 btonEnviar.addEventListener("click",function (event){
     event.preventDefault();
 
@@ -28,6 +30,15 @@ btonEnviar.addEventListener("click",function (event){
 
     //validar servicios
     valorServicioValido(servicioF)? "":array_errores.push("-Seleccione un servicio válido para realizar el turno");
+
+    //validar tarjeta en caso de estar seleccionada
+    if(radioBtnTarjeta.checked){
+        const nombreTarjeta = document.getElementById("");
+        const nombreTarjeta = document.getElementById("");
+        const nombreTarjeta = document.getElementById("");
+        const nombreTarjeta = document.getElementById("");
+
+    }
 
     /*Si el arreglo de errores no contiene ningun error, se envia el formulario,sino se genera un reporte de errores
     que se vera por encima del formulario*/
