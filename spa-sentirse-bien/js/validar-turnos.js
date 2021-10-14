@@ -1,3 +1,4 @@
+let bandera2=0;
 const formulario = document.querySelector("form");
 const btonEnviar = document.getElementById("enviar");
 const radioBtnTarjeta= document.getElementById("tarjeta");
@@ -13,6 +14,7 @@ btonEnviar.addEventListener("click",function (event){
     //const fechaF= document.querySelector("#fecha");
     
     array_errores=[];
+    array_errores_tarjeta=[];
 
     //validamos Nombre
     contieneSoloLetras(nombreF.value)  ? "":array_errores.push("-Solo se pueden usar letras en el campo nombre");
@@ -31,24 +33,34 @@ btonEnviar.addEventListener("click",function (event){
     valorServicioValido(servicioF)? "":array_errores.push("-Seleccione un servicio válido para realizar el turno");
 
     //validar campos de tarjeta en caso de estar seleccionada
-    
-    if(radioBtnTarjeta.ariaChecked=="true"){
+    if(bandera1>0){
         const nombreTarjeta = document.getElementById("nombre-tarjeta");
         const numeroTarjeta = document.getElementById("numero-tarjeta");
         const vencimientoTarjeta = document.getElementById("vencimiento-tarjeta");
         const codigoTarjeta = document.getElementById("codigo-tarjeta");
-        alert("a");
-        contieneSoloLetras(nombreTarjeta)? "": array_errores.push("-El nombre indicado en la tarjeta solo puede contener letras");
-        contieneSoloNumeros(numeroTarjeta)? "": array_errores.push("-El campo de número de tarjeta solo puede contener números");
-        noContieneLetras(vencimientoTarjeta)? "": array_errores.push("-El campo de vencimiento de la tarjeta nó puede contener letras");
-        contieneSoloNumeros(codigoTarjeta)? "": array_errores.push("-El campo de código de tarjeta solo puede contener números");
+
+        contieneSoloLetras(nombreTarjeta.value)? "": array_errores_tarjeta.push("-El nombre indicado en la tarjeta solo puede contener letras");
+        contieneSoloNumeros(numeroTarjeta.value)? "": array_errores_tarjeta.push("-El campo de número de tarjeta solo puede contener números");
+        noContieneLetras(vencimientoTarjeta.value)? "": array_errores_tarjeta.push("-El campo de vencimiento de la tarjeta solo puede contener números y un / para separa el mes y el año ");
+        contieneSoloNumeros(codigoTarjeta.value)? "": array_errores_tarjeta.push("-El campo de código de tarjeta solo puede contener números");
     }
 
-    /*Si el arreglo de errores no contiene ningun error, se envia el formulario,sino se genera un reporte de errores
+    /*Si el arreglo de errores no contiene ningun error, se envia el formulario, sino se genera un reporte de errores
     que se vera por encima del formulario*/
-    if(array_errores.length != 0 ){
+    let error_datos_personales = array_errores.length != 0 ;
+    let error_datos_tarjeta=array_errores_tarjeta!=0;
+    if(error_datos_personales || error_datos_tarjeta){
         event.preventDefault();
-        generarReporteDeErrores(array_errores,this);
+        error_datos_personales? generarReporteDeErrores(array_errores,this):"";
+        error_datos_tarjeta? generarReporteDeErroresTarjeta(array_errores_tarjeta,this):"";
+        bandera2++;
+    }
+    else{
+        if(bandera2>0){
+            let erroresDiv= document.querySelector("#errores")
+            erroresDiv.classList.remove("lista-errores");
+            erroresDiv.innerHTML="";
+        };
     }
     
 });
@@ -59,7 +71,8 @@ function contieneSoloLetras(valor){
 }
 
 function noContieneLetras(valor){
-    return !contieneSoloLetras(valor);   
+    const regexSoloLetras = /^[0-9]*\/[0-9]*$/;
+    return regexSoloLetras.test(valor);     
 }
 
 function contieneSoloNumeros(valor){
@@ -74,8 +87,8 @@ function mailValido(valor){
 }
 
 function valorServicioValido(elementoServicio){    
-    let valor= elementoServicio.value;
-    return (valor>0 && valor<=elementoServicio.lastElementChild.value);
+    let valor= parseInt(elementoServicio.value);
+    return (valor>0 && valor<= parseInt(elementoServicio.lastElementChild.value));
 }
 
 function generarReporteDeErrores(array_errores,formulario)
@@ -98,4 +111,20 @@ function generarReporteDeErrores(array_errores,formulario)
     }    
     formulario.insertBefore(divErrores,formulario.firstChild)
     */
+}
+function generarReporteDeErroresTarjeta (array_errores_tarjeta){
+    let div_tarjeta=document.getElementById("#div-tarjeta");
+    if(document.querySelector("#errores-tarjeta")!=null){
+        div_tarjeta.removeChild(document.querySelector("#errores-tarjeta"));
+    }
+    const divErroresTarjeta= document.createElement("div");
+    divErroresTarjeta.classList.add("lista-errores");
+    divErroresTarjeta.id="errores-tarjeta";
+    let erroresString="";
+    while(array_errores_tarjeta.length>0){
+        erroresString+="<div class='error'>"+array_errores_tarjeta.shift()+"<div>";
+    }    
+    divErroresTarjeta.innerHTML= erroresString;
+    let legendaError=document.querySelector("#div-tarjeta fieldset legend")
+    document.querySelector("#div-tarjeta fieldset").insertBefore(divErroresTarjeta,legendaError);
 }
