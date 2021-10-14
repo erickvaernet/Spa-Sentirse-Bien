@@ -1,13 +1,14 @@
 <?php
-$servidor = "localhost";
-$usuario = "id17396697_root";
-$clave = "*Erick951222";
-$baseDeDatos = "id17396697_spa";
+$servidor = "spa-sentirse-bien.mysql.database.azure.com";
+$usuario = "erick9512@spa-sentirse-bien";
+$clave = "*Spasentirsebien";
+$baseDeDatos = "spa-sentirse-bien";
 
 $enlace = mysqli_connect($servidor, $usuario, $clave, $baseDeDatos);
 if (!$enlace) {
-    echo "ERROR EN LA CONEXION AL SERVIDOR";
+    echo "ERROR EN LA CONEXION AL SERVIDORAAAAAAAA";
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -42,7 +43,7 @@ if (!$enlace) {
                     <h1 class="titulo-turnos" style="margin-bottom: 10px; text-decoration: underline;">Para pedir un turno por favor <br>complete el siguiente formulario.</h1>
                     <h2 class="subtitulo" style="font-size: 1rem;">Todos los campos con * son obligatorios</h2>
                     <form action="#" method="POST" class="form-serv-indiv">
-
+                        <div id="errores"></div>
                         <label for="nombre">Nombre*</label>
                         <input id="nombre" name="nombre" type="text" class="form" placeholder="Nombre" required>
 
@@ -100,7 +101,7 @@ if (!$enlace) {
                             });
                         </script>
                         <div class="contenedor-btn">
-                            <input type="submit" value="Enviar" name="enviar">
+                            <input id="enviar" type="submit" value="Enviar" name="enviar">
                             <input type="reset" value="Resetear">
                         </div>
 
@@ -118,9 +119,9 @@ if (!$enlace) {
                 <a href="https://www.instagram.com/Spa-Sentirse-Bien" target="_blank"><i class="fab fa-instagram"></i></a>
             </div>
         </footer>
-    </div>
-</body>
-
+    </div>    
+    <script src="./js/validar-turnos.js"></script>
+</body> 
 </html>
 
 <?php

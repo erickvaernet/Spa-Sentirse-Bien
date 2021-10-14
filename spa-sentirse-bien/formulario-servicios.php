@@ -1,8 +1,8 @@
 <?php
-    $servidor= "localhost";
-    $usuario="id17396697_root";
-    $clave="*Erick951222";
-    $baseDeDatos="id17396697_spa";
+    $servidor = "spa-sentirse-bien.mysql.database.azure.com";
+    $usuario = "erick9512@spa-sentirse-bien";
+    $clave = "*Spasentirsebien";
+    $baseDeDatos = "spa-sentirse-bien";
 
     $enlace=mysqli_connect($servidor,$usuario,$clave,$baseDeDatos);
     if(!$enlace){
@@ -55,7 +55,7 @@
                         <textarea name="texto_consulta" id="texto_consulta"></textarea>
 
                         <div class="contenedor-btn">
-                            <input type="submit" value="Enviar" name="enviar">
+                            <input id="enviar" type="submit" value="Enviar" name="enviar">
                             <input type="reset" value="Resetear">
                         </div>
 
