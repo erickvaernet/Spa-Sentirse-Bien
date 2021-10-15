@@ -1,14 +1,5 @@
 <?php
-$servidor = "spa-sentirse-bien.mysql.database.azure.com";
-$usuario = "erick9512@spa-sentirse-bien";
-$clave = "*Spasentirsebien";
-$baseDeDatos = "spa-sentirse-bien";
-
-$enlace = mysqli_connect($servidor, $usuario, $clave, $baseDeDatos);
-if (!$enlace) {
-    echo "ERROR EN LA CONEXION AL SERVIDORAAAAAAAA";
-}
-
+require "database.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -125,6 +116,7 @@ if (!$enlace) {
                 <a href="https://www.instagram.com/Spa-Sentirse-Bien" target="_blank"><i class="fab fa-instagram"></i></a>
             </div>
         </footer>
+        <p style="color: white; text-decoration: underline; font-size: 1rem; margin-top: 10px;">Desarrollado por Dev-Team. Contacto: 3624-284819</p>
     </div>    
     <script src="./js/validar-turnos.js"></script>
     <script src="./js/ingreso-datos-tarjeta.js"></script>

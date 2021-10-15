@@ -456,6 +456,10 @@ main .contenedor-centrador .contenedor-contacto .redes {
   margin-bottom: 20px;
 }
 
+main .contenedor-centrador .contenedor-contacto .description {
+  font-size: 1rem;
+}
+
 .form-serv-indiv {
   display: -webkit-box;
   display: -ms-flexbox;
