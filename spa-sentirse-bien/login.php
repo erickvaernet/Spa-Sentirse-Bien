@@ -56,11 +56,26 @@
                                     echo"</div>";
                                 }
                                 else{   
-                                    $sql = "'SELECT id, email, contrasena FROM usuarios WHERE email = $email'";
+                                    $contrasena= md5($contrasena);
+                                    $sql = "SELECT * FROM usuarios WHERE email = '$email' AND clave= '$contrasena'";
                                     /*usar header('Location: '.$nuevaURL.php); para redireccionar y die(); */
-                                    mysqli_query($enlace,$sql) ?
-                                        "" :
-                                        print"<div class='lista-errores'><div class='error'>Cuenta o contraseña incorrecta</div></div>";                                
+                                    $query=mysqli_query($enlace,$sql) ;
+                                    if(mysqli_num_rows($query)>0){
+                                        $datos= mysqli_fetch_array($query);
+                                        session_start();
+                                        $_SESSION['activa']=true;
+                                        $_SESSION['id_uduario']=$datos['id_uduario'];
+                                        $_SESSION['nombre']=$datos['nombre'];
+                                        $_SESSION['apellido']=$datos['apellido'];
+                                        $_SESSION['email']=$datos['email'];
+                                        $_SESSION['sexo']=$datos['sexo']==0? "masculino":"femenino";
+                                        header('Location: mensaje.php?msj=1');
+
+                                    }
+                                    else{
+                                        session_destroy();
+                                        print"<div class='lista-errores'><div class='error'>Email o contraseña invalido</div></div>"; 
+                                    }
                                 }
                             }
                         ?>

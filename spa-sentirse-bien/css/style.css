@@ -704,4 +704,11 @@ footer .servicios i {
 .error {
   font-weight: bold;
 }
+
+.mensaje_exito {
+  background: green;
+  font-size: 1.5rem;
+  border-radius: 50px;
+  margin: 10px;
+}
 /*# sourceMappingURL=style.css.map */

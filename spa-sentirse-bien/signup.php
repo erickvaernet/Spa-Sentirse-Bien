@@ -65,7 +65,7 @@
                                 empty($contrasena)? array_push($array_errores, "El campo contraseña no puede estar vacío"):"";
                                 strlen($contrasena) < 6? array_push($array_errores, "El campo contraseña no puede tener menos de 6 caracteres."):"";
                                 
-                                empty($sexo)? array_push($array_errores, "Seleccione su 'sexo', este no puede estar vacio"):"";
+                                //empty($sexo)? array_push($array_errores, "Seleccione su 'sexo', este no puede estar vacio"):"";
 
                                 if($array_errores){
                                     echo "<div class='lista-errores'>";
@@ -75,10 +75,13 @@
                                     echo"</div>";
                                 }
                                 else{   
-                                    $contrasena= md5($contrasena);
-                                    $sql = "INSERT INTO usuarios (nombre, apellido, email, contrasena, sexo) VALUES ($nombre, $apellido, $email, $contrasena, $sexo)";
+                                    
+                                    //$contrasena= md5($contrasena);
+                                    //$sexo= $sexo==true? true:false;
+                                    $sql = "INSERT INTO usuarios (nombre, apellido, dni, telefono, email, clave, id_sexo) VALUES ('$nombre', '$apellido', $dni, $telefono, '$email', '$contrasena', $sexo)";
+                                    //print var_dump($sql);
                                     mysqli_query($enlace,$sql) ?
-                                        print "<div style='background:green;'>Usuario creado con exito, puede ingresar <a href=''>aqui</a></div>" :
+                                        print "<div class='mensaje_exito'>Usuario creado con exito, puede ingresar <a href='./login.php'>aqui</a></div>" :
                                         print"<div class='lista-errores'><div class='error'>Lo siento hubo algun problema en la creacion de usuario, contacte con el administrador</div></div>";                                
                                 }
                             }
@@ -99,12 +102,12 @@
                         <input type="email" name="email" id="email" placeholder="Ingrese su e-mail">
 
                         <label for="contrasena">Contraseña:</label>
-                        <input type="contrasena" name="contrasena" id="contrasena" placeholder="Ingrese la contraseña deseada">
+                        <input type="password" name="contrasena" id="contrasena" placeholder="Ingrese la contraseña deseada">
 
                         <div class="contenedor-sexos" style="margin: 10px 0 10px 0;">
                             <span style="text-decoration: underline;">Sexo*:</span>
-                            <input type="radio" name="sexo" id="masculino" value="masculino" required> <label for="masculino">Hombre</label>
-                            <input type="radio" name="sexo" id="femenino" value="femenino" required> <label for="femenino">Mujer</label>
+                            <input type="radio" name="sexo" id="masculino" value="0" required> <label for="masculino">Hombre</label>
+                            <input type="radio" name="sexo" id="femenino" value="1" required> <label for="femenino">Mujer</label>
                         </div>
 
                         <div class="contenedor-btn" >
