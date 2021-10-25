@@ -81,7 +81,7 @@
                                     $sql = "INSERT INTO usuarios (nombre, apellido, dni, telefono, email, clave, id_sexo) VALUES ('$nombre', '$apellido', $dni, $telefono, '$email', '$contrasena', $sexo)";
                                     //print var_dump($sql);
                                     mysqli_query($enlace,$sql) ?
-                                        print "<div class='mensaje_exito'>Usuario creado con exito, puede ingresar <a href='./login.php'>aqui</a></div>" :
+                                        header('Location: mensaje.php?msj=4'):
                                         print"<div class='lista-errores'><div class='error'>Lo siento hubo algun problema en la creacion de usuario, contacte con el administrador</div></div>";                                
                                 }
                             }

@@ -1,7 +1,7 @@
 <?php
 require "database.php";
 session_start();
-if(!isset($_SESSION['activa'])) print "NO ACTIVAAAAAAAAA"//header('Location: mensaje.php?msj=2');
+if(!isset($_SESSION['activa'])) header('Location: mensaje.php?msj=2');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -39,8 +39,9 @@ if(!isset($_SESSION['activa'])) print "NO ACTIVAAAAAAAAA"//header('Location: men
                         <!--<div id="errores"></div>-->
                         <?php      
                             if(!empty($_POST['nombre-tarjeta'])){
-                                $id_uduario=$_SESSION['id_usuario'];
+                                $id_usuario=$_SESSION['id_usuario'];
                                 $servicio= $_POST['servicio'];
+                                $fecha_hora_turno = str_replace("T", " ", $_POST["fecha"]) . ":00";
                                 $nombre_tarjeta = $_POST['nombre-tarjeta'];
                                 $numero_tarjeta = $_POST['numero-tarjeta'];
                                 $vencimiento_tarjeta = $_POST['vencimiento-tarjeta'];
@@ -49,19 +50,17 @@ if(!isset($_SESSION['activa'])) print "NO ACTIVAAAAAAAAA"//header('Location: men
                                 $array_errores = array();
 
                                 empty($nombre_tarjeta)? array_push($array_errores, "El campo Nombre de la tarjeta no pude estar vacío"):""; 
-                                preg_match("/^[A-Z]*$/i",$nombre_tarjeta)==0? array_push($array_errores, "El campo Nombre de la tarjeta solo puede contener letras"):"";
+                                preg_match("/^[A-Z]*\s[A-Z]*$/i",$nombre_tarjeta)==0? array_push($array_errores, "El campo Nombre de la tarjeta solo puede contener letras"):"";
 
                                 empty($numero_tarjeta)? array_push($array_errores, "El campo numero de tarjeta no pude estar vacío"):"";
                                 preg_match("/^[0-9]*$/i",$numero_tarjeta)==0? array_push($array_errores, "El campo numero de tarjeta solo puede contener numeros"):"";
-
+                            
+                                empty($vencimiento_tarjeta)? array_push($array_errores, "El campo vencimiento de la tarjeta de tarjeta no pude estar vacío"):"";
+                                preg_match("/^[0-9]*\/[0-9]*$/i",$vencimiento_tarjeta)==0? array_push($array_errores, "El campo vencimiento de la tarjeta solo puede contener numeros y un / "):"";
+                                
                                 empty($codigo_tarjeta)? array_push($array_errores, "El campo del codigo de la tarjeta no pude estar vacío"):"";
                                 preg_match("/^[0-9]*$/i",$codigo_tarjeta)==0? array_push($array_errores, "El campo del codigo de la tarjeta solo puede contener numeros"):"";
-
-                                empty($vencimiento_tarjeta)? array_push($array_errores, "El campo vencimiento de la tarjeta de tarjeta no pude estar vacío"):"";
-                                preg_match("/^[0-9]*\/^[0-9]*$/i",$vencimiento_tarjeta)==0? array_push($array_errores, "El campo vencimiento de la tarjeta solo puede contener numeros y un / "):"";
-
-                                //empty($sexo)? array_push($array_errores, "Seleccione su 'sexo', este no puede estar vacio"):"";
-
+                                
                                 if($array_errores){
                                     echo "<div class='lista-errores'>";
                                     foreach ($array_errores as $value) {
@@ -70,12 +69,12 @@ if(!isset($_SESSION['activa'])) print "NO ACTIVAAAAAAAAA"//header('Location: men
                                     echo"</div>";
                                 }
                                 else{                                      
-                                    
-                                    $sql = "INSERT INTO usuarios (nombre, apellido, dni, telefono, email, clave, id_sexo) VALUES ('$nombre', '$apellido', $dni, $telefono, '$email', '$contrasena', $sexo)";
+                                    //print var_dump($id_usuario);print var_dump($servicio);print var_dump($fecha_hora_turno);
+                                    $sql = "INSERT INTO turnos (id_usuario, id_servicio, fecha_hora_turno) VALUES ($id_usuario, $servicio, '$fecha_hora_turno')";
                               
                                     mysqli_query($enlace,$sql) ?
-                                        print "<div class='mensaje_exito'>Usuario creado con exito, puede ingresar <a href='./login.php'>aqui</a></div>" :
-                                        print"<div class='lista-errores'><div class='error'>Lo siento hubo algun problema en la creacion de usuario, contacte con el administrador</div></div>";                                
+                                        header('Location: mensaje.php?msj=5&fecha_turno='.$fecha_hora_turno) :
+                                        print"<div class='lista-errores'><div class='error'>Lo siento hubo algun problema en la Base de Datos, contacte con el administrador</div></div>";                                
                                 }
                             }
                         ?>              

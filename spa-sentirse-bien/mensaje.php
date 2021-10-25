@@ -36,6 +36,7 @@
                        
                     <?php
                         $codigo_mensaje=$_REQUEST['msj'];
+                        isset($_REQUEST['fecha_turno'])? $fecha= $_REQUEST['fecha_turno']:"";
                         switch ($codigo_mensaje) {
                             case '1':
                                 $mensaje="¡Te logueaste exitosamente!<br>Ahora podes reservar un turno -><a href='./turnos.php'>aquí</a><-";
@@ -49,7 +50,15 @@
                             case '3':
                                 $mensaje="Ya está logueado con una cuenta, si no esta logueado en su cuenta y desea salir de ella haga click -><a href='./logout.php'>aquí</a><-";
                                 $error=1;
-                                break;                         
+                                break;                                        
+                            case '4':
+                                $mensaje="La cuenta se ha creado con exito, puede ingresar a ella desde -><a href='./login.php'>aquí</a><-";
+                                $error=0;
+                                break;                                                                        
+                            case '5':
+                                $mensaje="Se creo el Turno con exito para el ".$fecha."hs";
+                                $error=0;
+                                break;                     
                             default:
                                 $msj_error="ERROR";
                                 $error=1;

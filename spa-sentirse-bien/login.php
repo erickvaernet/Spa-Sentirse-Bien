@@ -66,7 +66,7 @@
                                         $datos= mysqli_fetch_array($query);
                                         //session_start();
                                         $_SESSION['activa']=true;
-                                        $_SESSION['id_uduario']=$datos['id_uduario'];
+                                        $_SESSION['id_usuario']=$datos['id_usuario'];
                                         $_SESSION['nombre']=$datos['nombre'];
                                         $_SESSION['apellido']=$datos['apellido'];
                                         $_SESSION['email']=$datos['email'];
@@ -85,7 +85,7 @@
                         <input type="email" name="email" id="email" placeholder="Ingrese su e-mail">
 
                         <label for="contrasena">Contraseña:</label>
-                        <input type="contrasena" name="contrasena" id="contrasena" placeholder="Ingrese la contraseña deseada">
+                        <input type="password" name="contrasena" id="contrasena" placeholder="Ingrese la contraseña deseada">
 
                         <div class="contenedor-btn" style="margin-top: 30px;">
                             <input id="enviar" type="submit" value="Ingresar" name="enviar" style="width: 50%;">
