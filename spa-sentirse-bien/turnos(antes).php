@@ -1,7 +1,6 @@
 <?php
 require "database.php";
-session_start();
-if(!isset($_SESSION['activa'])) print "NO ACTIVAAAAAAAAA"//header('Location: mensaje.php?msj=2');
+if(!$_SESSION['activa']) header('Location: mensaje.php?msj=2');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -36,51 +35,23 @@ if(!isset($_SESSION['activa'])) print "NO ACTIVAAAAAAAAA"//header('Location: men
                     <h1 class="titulo-turnos" style="margin-bottom: 10px; text-decoration: underline;">Para pedir un turno por favor <br>complete el siguiente formulario.</h1>
                     <h2 class="subtitulo" style="font-size: 1rem;">Todos los campos con * son obligatorios</h2>
                     <form action="#" method="POST" class="form-serv-indiv">
-                        <!--<div id="errores"></div>-->
-                        <?php      
-                            if(!empty($_POST['nombre-tarjeta'])){
-                                $id_uduario=$_SESSION['id_usuario'];
-                                $servicio= $_POST['servicio'];
-                                $nombre_tarjeta = $_POST['nombre-tarjeta'];
-                                $numero_tarjeta = $_POST['numero-tarjeta'];
-                                $vencimiento_tarjeta = $_POST['vencimiento-tarjeta'];
-                                $codigo_tarjeta = $_POST['codigo-tarjeta'];                                
-                               
-                                $array_errores = array();
+                        <div id="errores"></div>
+                        <label for="nombre">Nombre*</label>
+                        <input id="nombre" name="nombre" type="text" class="form" placeholder="Nombre" required>
 
-                                empty($nombre_tarjeta)? array_push($array_errores, "El campo Nombre de la tarjeta no pude estar vacío"):""; 
-                                preg_match("/^[A-Z]*$/i",$nombre_tarjeta)==0? array_push($array_errores, "El campo Nombre de la tarjeta solo puede contener letras"):"";
+                        <label for="apellido">Apellido*</label>
+                        <input id="apellido" name="apellido" type="text" placeholder="Apellido" required>
 
-                                empty($numero_tarjeta)? array_push($array_errores, "El campo numero de tarjeta no pude estar vacío"):"";
-                                preg_match("/^[0-9]*$/i",$numero_tarjeta)==0? array_push($array_errores, "El campo numero de tarjeta solo puede contener numeros"):"";
+                        <label for="dni">DNI*</label>
+                        <input id="dni" name="dni" type="number" placeholder="DNI" required>
 
-                                empty($codigo_tarjeta)? array_push($array_errores, "El campo del codigo de la tarjeta no pude estar vacío"):"";
-                                preg_match("/^[0-9]*$/i",$codigo_tarjeta)==0? array_push($array_errores, "El campo del codigo de la tarjeta solo puede contener numeros"):"";
+                        <label for="telefono">Teléfono*</label>
+                        <input type="text" name="telefono" id="telefono" placeholder="Telefono" required>
 
-                                empty($vencimiento_tarjeta)? array_push($array_errores, "El campo vencimiento de la tarjeta de tarjeta no pude estar vacío"):"";
-                                preg_match("/^[0-9]*\/^[0-9]*$/i",$vencimiento_tarjeta)==0? array_push($array_errores, "El campo vencimiento de la tarjeta solo puede contener numeros y un / "):"";
+                        <label for="email">Email*</label>
+                        <input type="text" name="email" id="email" placeholder="Email" required>
 
-                                //empty($sexo)? array_push($array_errores, "Seleccione su 'sexo', este no puede estar vacio"):"";
-
-                                if($array_errores){
-                                    echo "<div class='lista-errores'>";
-                                    foreach ($array_errores as $value) {
-                                        print "<div class='error'>$value</div>";
-                                    }
-                                    echo"</div>";
-                                }
-                                else{                                      
-                                    
-                                    $sql = "INSERT INTO usuarios (nombre, apellido, dni, telefono, email, clave, id_sexo) VALUES ('$nombre', '$apellido', $dni, $telefono, '$email', '$contrasena', $sexo)";
-                              
-                                    mysqli_query($enlace,$sql) ?
-                                        print "<div class='mensaje_exito'>Usuario creado con exito, puede ingresar <a href='./login.php'>aqui</a></div>" :
-                                        print"<div class='lista-errores'><div class='error'>Lo siento hubo algun problema en la creacion de usuario, contacte con el administrador</div></div>";                                
-                                }
-                            }
-                        ?>              
-
-                        <label for="servicio" style="margin-top: 20px;">Servicio*:</label>
+                        <label for="servicio">Servicio*:</label>
                         <select name="servicio" id="servicio" >
                             <option value="1">Masajes Anti-stress</option>
                             <option value="2">Masajes Descontracturantes</option>
@@ -97,6 +68,12 @@ if(!isset($_SESSION['activa'])) print "NO ACTIVAAAAAAAAA"//header('Location: men
                             <option value="13">Crio frecuencia corporal con efecto lifting</option>
                             <option value="14">Ultracavitación</option>
                         </select>
+
+                        <div class="contenedor-sexos">
+                            <span style="text-decoration: underline;">Sexo*:</span>
+                            <input type="radio" name="sexo" id="masculino" value="masculino" required> <label for="masculino">Hombre</label>
+                            <input type="radio" name="sexo" id="femenino" value="femenino" required> <label for="femenino">Mujer</label>
+                        </div>
 
                         <label for="fecha">Fecha y hora del turno*</label>
                         <input type="datetime-local" id="fecha" name="fecha" required="required">
@@ -116,26 +93,11 @@ if(!isset($_SESSION['activa'])) print "NO ACTIVAAAAAAAAA"//header('Location: men
                             });
                         </script>
 
-                        <div class="contenedor-sexos" style="margin:20px 0 0 0">
+                        <div class="contenedor-sexos">
                             <span style="text-decoration: underline;">Método de págo*:</span>
-                            <input type="radio" name="metodo-pago" id="tarjeta" value="tarjeta" required> <label for="tarjeta">Credito</label>
-                            <input type="radio" name="metodo-pago" id="efectivo" value="efectivo" required> <label for="efectivo">Debito</label>
-                        </div>
-
-                        <fieldset class="form-serv-indiv" style="width: 100%; padding: 0  10px 10px 10px">
-                            <legend style="text-decoration:underline">Datos de Tarjeta</legend>
-                            <label for="nombre-tarjeta">Nombre indicado en la tarjeta*</label>
-                            <input id="nombre-tarjeta" name="nombre-tarjeta" type="text" placeholder="Nombre como se indica en la tarjeta" required>
-
-                            <label for="numero-tarjeta">Número de la tarjeta*</label>
-                            <input id="numero-tarjeta" name="numero-tarjeta" type="number" placeholder="número de tarjeta" required>
-                            
-                            <label for="vencimiento-tarjeta">Vencimiento de la tarjeta*</label>
-                            <input id="vencimiento-tarjeta" name="vencimiento-tarjeta" type="text" placeholder="MM/AA" required>
-
-                            <label for="codigo-tarjeta">Código de seguridad*</label>
-                            <input id="codigo-tarjeta" name="codigo-tarjeta" type="number" placeholder="código" required>
-                        </fieldset>
+                            <input type="radio" name="metodo-pago" id="tarjeta" value="tarjeta" required> <label for="tarjeta">Tarjeta</label>
+                            <input type="radio" name="metodo-pago" id="efectivo" value="efectivo" required> <label for="efectivo">Efectivo</label>
+                        </div>                       
 
                         <div class="contenedor-btn">
                             <input id="enviar" type="submit" value="Enviar" name="enviar">
@@ -157,7 +119,7 @@ if(!isset($_SESSION['activa'])) print "NO ACTIVAAAAAAAAA"//header('Location: men
         </footer>
         <p style="color: white; text-decoration: underline; font-size: 1rem; margin-top: 10px;">Desarrollado por Dev-Team. Contacto: 3624-284819</p>
     </div>    
-    <!--<script src="./js/validar-turnos.js"></script>-->
+    <script src="./js/validar-turnos.js"></script>
     <script src="./js/ingreso-datos-tarjeta.js"></script>
 </body> 
 </html>

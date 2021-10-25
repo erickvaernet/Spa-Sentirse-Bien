@@ -1,6 +1,7 @@
 <?php
     require "database.php";
-
+    session_start();
+    if($_SESSION['activa']) header('Location: mensaje.php?msj=3');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -63,7 +64,7 @@
                                     $query=mysqli_query($enlace,$sql) ;
                                     if(mysqli_num_rows($query)>0){
                                         $datos= mysqli_fetch_array($query);
-                                        session_start();
+                                        //session_start();
                                         $_SESSION['activa']=true;
                                         $_SESSION['id_uduario']=$datos['id_uduario'];
                                         $_SESSION['nombre']=$datos['nombre'];

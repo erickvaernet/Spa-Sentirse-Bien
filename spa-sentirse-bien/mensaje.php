@@ -45,10 +45,14 @@
                                 $mensaje="No puede pedir un turno sin haberse logueado, lo puede hacer -><a href='./login.php'>aquí</a><-
                                 <br>En caso de no tener una cuenta puede registrarse -><a href='./signup.php'>aquí</a><-";
                                 $error=1;
-                                break;                            
+                                break;    
+                            case '3':
+                                $mensaje="Ya está logueado con una cuenta, si no esta logueado en su cuenta y desea salir de ella haga click -><a href='./logout.php'>aquí</a><-";
+                                $error=1;
+                                break;                         
                             default:
-                                $msj_error="";
-                                $error=0;
+                                $msj_error="ERROR";
+                                $error=1;
                                 break;
                         }
                         if($error==0) print "<div class='mensaje_exito_grande'> $mensaje </div>";

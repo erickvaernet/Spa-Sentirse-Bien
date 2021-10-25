@@ -1,6 +1,7 @@
 <?php
     require "database.php";
-
+    session_start();
+    if($_SESSION['activa']) header('Location: mensaje.php?msj=3');
 ?>
 <!DOCTYPE html>
 <html lang="es">
