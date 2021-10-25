@@ -38,7 +38,7 @@
                         $codigo_mensaje=$_REQUEST['msj'];
                         switch ($codigo_mensaje) {
                             case '1':
-                                $mensaje="¡Te logueaste exitosamente!<br>Ahora podes reservar un turno <a href='./turnos.php'>aquí</a>";
+                                $mensaje="¡Te logueaste exitosamente!<br>Ahora podes reservar un turno -><a href='./turnos.php'>aquí</a><-";
                                 $error=0;
                                 break;
                             case '2':
@@ -50,8 +50,8 @@
                                 $error=0;
                                 break;
                         }
-                        if($error==0) print "<div> $mensaje </div>";
-                        else print "<div> $mensaje </div>";
+                        if($error==0) print "<div class='mensaje_exito_grande'> $mensaje </div>";
+                        else print "<div class='mensaje_error_grande'> $mensaje </div>";
                     ?>                       
 
                     </div>

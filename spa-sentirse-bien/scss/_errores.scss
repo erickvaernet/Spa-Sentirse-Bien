@@ -14,3 +14,18 @@
 .mensaje_exito{
     background:green; font-size:1.5rem; border-radius:50px; margin: 10px;
 }
+.mensaje_exito_grande{
+    font-size: 3rem;
+    line-height: 5rem;
+    background-color: green;
+    border-radius: 100px;
+    margin: 20px;
+}
+
+.mensaje_error_grande{
+    font-size: 2.5rem;
+    line-height: 4rem;
+    background-color: red;
+    border-radius: 100px;
+    margin: 20px;
+}

@@ -35,10 +35,11 @@
                         <h3 style="font-size:2rem; text-decoration:underline; margin:15px">Ingreso de usuario</h3>
                         <div class="description">Ingrese los datos de la cuenta</div>
                         <?php      
-                            if(!empty($_POST['nombre'])){
+                            if(!empty($_POST['email'])){
                                 $contrasena = $_POST['contrasena'];
                                 $email = $_POST['email'];                               
 
+                                //print "<p style='font-size:4rem'>SIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII<p>";
                                 $array_errores = array();
 
                                 empty($email)? array_push($array_errores, "El campo email no puede estar vacio"):"";
