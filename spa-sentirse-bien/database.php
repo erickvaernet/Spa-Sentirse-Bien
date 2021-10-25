@@ -1,8 +1,8 @@
 <?php
-$servidor = "spa-sentirse-bien.mysql.database.azure.com";
-$usuario = "erick9512@spa-sentirse-bien";
-$clave = "*Spasentirsebien";
-$baseDeDatos = "spa-sentirse-bien";
+$servidor = "remotemysql.com";
+$usuario = "lj0SNYIAIM";
+$clave = "sWxLgSU8ej";
+$baseDeDatos = "lj0SNYIAIM";
 
 $enlace = mysqli_connect($servidor, $usuario, $clave, $baseDeDatos);
 if (!$enlace) {

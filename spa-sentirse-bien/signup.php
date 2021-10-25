@@ -38,8 +38,11 @@
                             if(!empty($_POST['nombre'])){
                                 $nombre = $_POST['nombre'];
                                 $apellido = $_POST['apellido'];
+                                $dni=$_POST['dni'];
+                                $telefono= $_POST['telefono'];
                                 $email = $_POST['email'];
-                                $contrasena = $_POST['contrasena'];                                                             
+                                $contrasena = $_POST['contrasena'];                                
+                                $sexo = $_POST['sexo'];  
 
                                 $array_errores = array();
 
@@ -49,6 +52,11 @@
                                 empty($apellido)? array_push($array_errores, "El campo Apellido no pude estar vacío"):"";
                                 preg_match("/^[A-Z]*$/i",$apellido)==0? array_push($array_errores, "El campo Apellido solo puede contener letras"):"";
 
+                                empty($dni)? array_push($array_errores, "El campo DNI no pude estar vacío"):"";
+                                preg_match("/^[0-9]*$/i",$dni)==0? array_push($array_errores, "El campo DNI solo puede contener numeros"):"";
+
+                                empty($telefono)? array_push($array_errores, "El campo Telefono no pude estar vacío"):"";
+                                preg_match("/^[0-9]*$/i",$telefono)==0? array_push($array_errores, "El campo Telefono solo puede contener numeros"):"";
                                 
                                 empty($email)? array_push($array_errores, "El campo email no puede estar vacio"):"";
                                 strpos($email, "@") === false? array_push($array_errores, "El email debe contener un @"):"";
@@ -56,6 +64,8 @@
 
                                 empty($contrasena)? array_push($array_errores, "El campo contraseña no puede estar vacío"):"";
                                 strlen($contrasena) < 6? array_push($array_errores, "El campo contraseña no puede tener menos de 6 caracteres."):"";
+                                
+                                empty($sexo)? array_push($array_errores, "Seleccione su 'sexo', este no puede estar vacio"):"";
 
                                 if($array_errores){
                                     echo "<div class='lista-errores'>";
@@ -65,9 +75,10 @@
                                     echo"</div>";
                                 }
                                 else{   
-                                    $sql = "INSERT INTO usuarios (nombre, apellido, email, contrasena) VALUES ($nombre, $apellido, $email, $contrasena)";
+                                    $contrasena= md5($contrasena);
+                                    $sql = "INSERT INTO usuarios (nombre, apellido, email, contrasena, sexo) VALUES ($nombre, $apellido, $email, $contrasena, $sexo)";
                                     mysqli_query($enlace,$sql) ?
-                                        print "<div style='background:green;'>Usuario creado con exito</div>" :
+                                        print "<div style='background:green;'>Usuario creado con exito, puede ingresar <a href=''>aqui</a></div>" :
                                         print"<div class='lista-errores'><div class='error'>Lo siento hubo algun problema en la creacion de usuario, contacte con el administrador</div></div>";                                
                                 }
                             }
@@ -78,13 +89,25 @@
                         <label for="apellido">Apellido:</label>
                         <input type="text" name="apellido" id="apellido" placeholder="Itroduzca su Apellido">
 
+                        <label for="dni">DNI*</label>
+                        <input id="dni" name="dni" type="number" placeholder="DNI" required>
+
+                        <label for="telefono">Teléfono de contacto*</label>
+                        <input type="text" name="telefono" id="telefono" placeholder="Telefono" required>
+
                         <label for="email">e-mail:</label>
                         <input type="email" name="email" id="email" placeholder="Ingrese su e-mail">
 
                         <label for="contrasena">Contraseña:</label>
                         <input type="contrasena" name="contrasena" id="contrasena" placeholder="Ingrese la contraseña deseada">
 
-                        <div class="contenedor-btn" style="margin-top: 30px;">
+                        <div class="contenedor-sexos" style="margin: 10px 0 10px 0;">
+                            <span style="text-decoration: underline;">Sexo*:</span>
+                            <input type="radio" name="sexo" id="masculino" value="masculino" required> <label for="masculino">Hombre</label>
+                            <input type="radio" name="sexo" id="femenino" value="femenino" required> <label for="femenino">Mujer</label>
+                        </div>
+
+                        <div class="contenedor-btn" >
                             <input id="enviar" type="submit" value="Enviar" name="enviar">
                             <input type="reset" value="Resetear">
                         </div>
