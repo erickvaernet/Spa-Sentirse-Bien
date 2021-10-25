@@ -70,7 +70,7 @@
                                         $_SESSION['email']=$datos['email'];
                                         $_SESSION['sexo']=$datos['sexo']==0? "masculino":"femenino";
                                         header('Location: mensaje.php?msj=1');
-
+                                        print "<p style='font-size: 4rem;'>exito asdasdasdasasd</p>";
                                     }
                                     else{
                                         session_destroy();
