@@ -42,8 +42,9 @@
                                 $error=0;
                                 break;
                             case '2':
-                                $mensaje="";
-                                $error=0;
+                                $mensaje="No puede pedir un turno sin haberse logueado, lo puede hacer -><a href='./login.php'>aquí</a><-
+                                <br>En caso de no tener una cuenta puede registrarse -><a href='./signup.php'>aquí</a><-";
+                                $error=1;
                                 break;                            
                             default:
                                 $msj_error="";
