@@ -78,7 +78,7 @@
                                 else{                                       
                                     $contrasena= md5($contrasena);
                                     //$sexo= $sexo==true? true:false;
-                                    $sql = "INSERT INTO usuarios (nombre, apellido, dni, telefono, email, clave, id_sexo) VALUES ('$nombre', '$apellido', $dni, $telefono, '$email', '$contrasena', $sexo)";
+                                    $sql = "INSERT INTO clientes (nombre, apellido, dni, telefono, email, clave, id_sexo) VALUES ('$nombre', '$apellido', $dni, $telefono, '$email', '$contrasena', $sexo)";
                                     //print var_dump($sql);
                                     mysqli_query($enlace,$sql) ?
                                         header('Location: mensaje.php?msj=4'):

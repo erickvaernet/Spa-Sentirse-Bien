@@ -59,14 +59,14 @@
                                 }
                                 else{   
                                     $contrasena= md5($contrasena);
-                                    $sql = "SELECT * FROM usuarios WHERE email = '$email' AND clave= '$contrasena'";
+                                    $sql = "SELECT * FROM clientes WHERE email = '$email' AND clave= '$contrasena'";
                                     /*usar header('Location: '.$nuevaURL.php); para redireccionar y die(); */
                                     $query=mysqli_query($enlace,$sql) ;
                                     if(mysqli_num_rows($query)>0){
                                         $datos= mysqli_fetch_array($query);
                                         //session_start();
                                         $_SESSION['activa']=true;
-                                        $_SESSION['id_usuario']=$datos['id_usuario'];
+                                        $_SESSION['id_cliente']=$datos['id_cliente'];
                                         $_SESSION['nombre']=$datos['nombre'];
                                         $_SESSION['apellido']=$datos['apellido'];
                                         $_SESSION['email']=$datos['email'];

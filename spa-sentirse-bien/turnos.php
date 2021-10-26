@@ -39,7 +39,7 @@ if(!isset($_SESSION['activa'])) header('Location: mensaje.php?msj=2');
                         <!--<div id="errores"></div>-->
                         <?php      
                             if(!empty($_POST['nombre-tarjeta'])){
-                                $id_usuario=$_SESSION['id_usuario'];
+                                $id_cliente=$_SESSION['id_cliente'];
                                 $servicio= $_POST['servicio'];
                                 $fecha_hora_turno = str_replace("T", " ", $_POST["fecha"]) . ":00";
                                 $nombre_tarjeta = $_POST['nombre-tarjeta'];
@@ -69,8 +69,8 @@ if(!isset($_SESSION['activa'])) header('Location: mensaje.php?msj=2');
                                     echo"</div>";
                                 }
                                 else{                                      
-                                    //print var_dump($id_usuario);print var_dump($servicio);print var_dump($fecha_hora_turno);
-                                    $sql = "INSERT INTO turnos (id_usuario, id_servicio, fecha_hora_turno) VALUES ($id_usuario, $servicio, '$fecha_hora_turno')";
+                                    //print var_dump($id_cliente);print var_dump($servicio);print var_dump($fecha_hora_turno);
+                                    $sql = "INSERT INTO turnos (id_cliente, id_servicio, fecha_hora_turno) VALUES ($id_cliente, $servicio, '$fecha_hora_turno')";
                               
                                     mysqli_query($enlace,$sql) ?
                                         header('Location: mensaje.php?msj=5&fecha_turno='.$fecha_hora_turno) :
@@ -157,11 +157,12 @@ if(!isset($_SESSION['activa'])) header('Location: mensaje.php?msj=2');
         <p style="color: white; text-decoration: underline; font-size: 1rem; margin-top: 10px;">Desarrollado por Dev-Team. Contacto: 3624-284819</p>
     </div>    
     <!--<script src="./js/validar-turnos.js"></script>-->
-    <script src="./js/ingreso-datos-tarjeta.js"></script>
+    <!--<script src="./js/ingreso-datos-tarjeta.js"></script>-->
 </body> 
 </html>
 
 <?php
+/*
 if (isset($_POST["enviar"])) {
     $nombre = $_POST["nombre"];
     $apellido = $_POST["apellido"];
@@ -183,5 +184,5 @@ if (isset($_POST["enviar"])) {
     if (!$ejecutar_insertar) {
         echo "ERROR EN CONSULTA";
     }
-}
+}*/
 ?>
