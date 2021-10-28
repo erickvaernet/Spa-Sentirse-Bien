@@ -53,3 +53,82 @@ INSERT INTO Servicios (nombre) VALUES ("VelaSlim");
 INSERT INTO Servicios (nombre) VALUES ("DermoHealth");
 INSERT INTO Servicios (nombre) VALUES ("Crio frecuencia corporal con efecto lifting");
 INSERT INTO Servicios (nombre) VALUES ("Ultracavitación");
+
+
+-------------------------------------------------------------------------------------------------------
+
+
+CREATE TABLE sexos (
+    id_sexo tinyint PRIMARY KEY NOT NULL,
+    nombre varchar(60) not null
+);
+
+INSERT INTO sexos (id_sexo, nombre) VALUES (0,"Masculino");
+INSERT INTO sexos (id_sexo, nombre) VALUES (1,"Femenino");
+
+CREATE TABLE clientes (
+    id_cliente int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nombre varchar(60) not null,
+    apellido varchar(60) not null,
+    dni int not null,
+    telefono varchar(80) not null,
+    email varchar(80) not null,
+    clave varchar(60) not null,
+    cuit INT NULL,
+    provincia VARCHAR(45) NULL,
+    ciudad VARCHAR(45) NULL,
+    codigopostal INT NULL,
+    id_sexo tinyint not null,
+    FOREIGN KEY(id_sexo) REFERENCES sexos(id_sexo)
+);
+
+CREATE TABLE profesionales (
+    id_profesional int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nombre varchar(60) not null,
+    apellido varchar(60) not null,
+    usuario varchar(60) not null,
+    clave varchar(60) not null,
+    permiso TINYINT NOT NULL,
+    id_sexo tinyint not null,
+    FOREIGN KEY(id_sexo) REFERENCES sexos(id_sexo)
+);
+
+CREATE TABLE servicios (
+    id_servicio int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nombre varchar(60) not null,
+    precio double(17,2) not null    
+);
+
+INSERT INTO servicios (nombre, precio) VALUES ("Masajes Anti-stress", 7000.00);
+INSERT INTO servicios (nombre, precio) VALUES ("Masajes Descontracturantes", 7500.00);
+INSERT INTO servicios (nombre, precio) VALUES ("Masajes con piedras calientes", 7200.00);
+INSERT INTO servicios (nombre, precio) VALUES ("Masajes Circulatorios", 7100.00);
+INSERT INTO servicios (nombre, precio) VALUES ("Lifting de pestaña", 1300.00);
+INSERT INTO servicios (nombre, precio) VALUES ("Depilación Facial", 3450.00);
+INSERT INTO servicios (nombre, precio) VALUES ("Belleza de manos y pies", 1500.00);
+INSERT INTO servicios (nombre, precio) VALUES ("Micro exfoliación facial con punta de diamante", 11000.00);
+INSERT INTO servicios (nombre, precio) VALUES ("Limpieza facial profunda + Hidratación", 5500.00);
+INSERT INTO servicios (nombre, precio) VALUES ("Crio frecuencia facial con efecto lifting", 6150.00);
+INSERT INTO servicios (nombre, precio) VALUES ("VelaSlim", 2000.00);
+INSERT INTO servicios (nombre, precio) VALUES ("DermoHealth", 6700.00);
+INSERT INTO servicios (nombre, precio) VALUES ("Crio frecuencia corporal con efecto lifting", 8500.00);
+INSERT INTO servicios (nombre, precio) VALUES ("Ultracavitación", 4900.00);
+
+CREATE TABLE turnos (
+    id_turno int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    id_cliente int not null,
+    id_servicio int not null,
+    id_profesional int not null,
+    fecha_hora_turno datetime not null,    
+    FOREIGN KEY(id_cliente) REFERENCES clientes(id_cliente),
+    FOREIGN KEY(id_servicio) REFERENCES servicios(id_servicio),
+    FOREIGN KEY(id_profesional) REFERENCES profesionales(id_profesional)
+);
+
+CREATE TABLE facturas (
+   id_factura INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+   fecha_hora_factura DATETIME NOT NULL,
+   precio_total DOUBLE(17,2) NOT NULL,
+   id_turno INT NOT NULL,
+   FOREIGN KEY(id_turno) REFERENCES turnos(id_turno)
+);

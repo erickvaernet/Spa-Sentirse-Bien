@@ -10,7 +10,8 @@ echo var_dump($data);
 */
 
 //----------------------------------------------------------------------------------------------------------------
-
+session_start();
+if(!isset($_SESSION['activa'])) header('Location: mensaje.php?msj=2');
 
 //Recibir detalles de factura
 $id_factura = 11199799111;//$_POST["id_factura"];
@@ -27,19 +28,19 @@ $fax_tienda = "";
 $identificacion_fiscal_tienda = "29388755592";
 
 //Recibir los datos del cliente
-$nombre_cliente = "Erick";//$_POST["nombre_cliente"];
-$apellidos_cliente = "Vaernet";//$_POST["apellidos_cliente"];
-$direccion_cliente = "Direccion";// $_POST["direccion_cliente"];
-$poblacion_cliente = "Resistencia";//$_POST["poblacion_cliente"];
-$provincia_cliente = "Chaco";//$_POST["provincia_cliente"];
-$codigo_postal_cliente = "3500";//$_POST["codigo_postal_cliente"];
-$identificacion_fiscal_cliente = 298575434492;//$_POST["identificacion_fiscal_cliente"];
+$nombre_cliente = $_SESSION['nombre'];
+$apellidos_cliente = $_SESSION['apellido'];//$_POST["apellidos_cliente"];
+$direccion_cliente = $_REQUEST['direccion'];// $_POST["direccion_cliente"];
+$poblacion_cliente = $_REQUEST['ciudad'];//$_POST["poblacion_cliente"];
+$provincia_cliente = $_REQUEST['provincia'];//$_POST["provincia_cliente"];
+$codigo_postal_cliente = $_REQUEST['cod_postal'];//$_POST["codigo_postal_cliente"];
+$identificacion_fiscal_cliente = $_REQUEST['cuit'];//$_POST["identificacion_fiscal_cliente"];
 
 //Recibir los datos de los productos
 $iva = "21";//$_POST["iva"];
 $gastos_de_envio = "0";//$_POST["gastos_de_envio"];
 $unidades = "1";//$_POST["unidades"];
-$productos = "MASAJES GG";//$_POST["productos"];
+$productos = $_REQUEST['servicio'];//$_POST["productos"];
 $precio_unidad = "5000";//$_POST["precio_unidad"];
 
 //variable que guarda el nombre del archivo PDF
@@ -172,4 +173,9 @@ fclose($fp);
 
 //Eliminaci�n del archivo en el servidor
 unlink($archivo);
+?>
+
+<?php
+
+header('Location: mensaje.php?msj=5&fecha_turno=0');
 ?>
