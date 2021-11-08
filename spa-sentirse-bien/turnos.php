@@ -174,7 +174,7 @@ if(!isset($_SESSION['activa'])) header('Location: mensaje.php?msj=2');
         </footer>
         <p style="color: white; text-decoration: underline; font-size: 1rem; margin-top: 10px;">Desarrollado por Dev-Team. Contacto: 3624-284819</p>
     </div>    
-    <script src="./js/agregarServicio.js"></script>
+    <script src="./js/agregar-servicios.js"></script>
     <script src="./js/redirigir.js"></script>
     <!--<script src="./js/ingreso-datos-tarjeta.js"></script>-->
 </body> 
