@@ -42,8 +42,8 @@ if(!isset($_SESSION['activa'])) header('Location: mensaje.php?msj=2');
                             if(!empty($_POST['nombre-tarjeta'])){
                                 $id_cliente=$_SESSION['id_cliente'];
                                 $servicio= $_POST['servicio'];
-                                $fecha_hora_turno = str_replace("T", " ", $_POST["fecha"]) . ":00";                                
-                                $metodo_pago= $_POST['metodo-pago'];
+                                $fecha_hora_turno = str_replace("T", " ", $_POST["fecha"]) . ":00";
+                                $cuit = $_POST['cuit'];
                                 $nombre_tarjeta = $_POST['nombre-tarjeta'];
                                 $numero_tarjeta = $_POST['numero-tarjeta'];
                                 $vencimiento_tarjeta = $_POST['vencimiento-tarjeta'];
@@ -55,8 +55,11 @@ if(!isset($_SESSION['activa'])) header('Location: mensaje.php?msj=2');
                                 preg_match("/^[A-Z]*\s[A-Z]*$/i",$nombre_tarjeta)==0? array_push($array_errores, "El campo Nombre de la tarjeta solo puede contener letras"):"";
 
                                 empty($numero_tarjeta)? array_push($array_errores, "El campo numero de tarjeta no pude estar vacío"):"";
-                                preg_match("/^[0-9]*$/i",$numero_tarjeta)==0? array_push($array_errores, "El campo numero de tarjeta solo puede contener numeros"):"";                        
-                                
+                                preg_match("/^[0-9]*$/i",$numero_tarjeta)==0? array_push($array_errores, "El campo numero de tarjeta solo puede contener numeros"):"";
+                            
+                                empty($numero_tarjeta)? array_push($array_errores, "El campo cuit no pude estar vacío"):"";
+                                preg_match("/^[0-9]*$/i",$numero_tarjeta)==0? array_push($array_errores, "El campo cuit solo puede contener numeros"):"";                            
+
                                 empty($vencimiento_tarjeta)? array_push($array_errores, "El campo vencimiento de la tarjeta de tarjeta no pude estar vacío"):"";
                                 preg_match("/^[0-9]*\/[0-9]*$/i",$vencimiento_tarjeta)==0? array_push($array_errores, "El campo vencimiento de la tarjeta solo puede contener numeros y un / "):"";
                                 
@@ -70,24 +73,36 @@ if(!isset($_SESSION['activa'])) header('Location: mensaje.php?msj=2');
                                     }
                                     echo"</div>";
                                 }                                
-                                else{                
-                                    $cuit=$_SESSION['cuit'];
-                                    $direccion=$_SESSION['direccion'];
-
-                                    $sql_turno = "INSERT INTO turnos (id_cliente, id_servicio, fecha_hora_turno) VALUES ($id_cliente, $servicio, '$fecha_hora_turno')";
-                            
-                                    if(mysqli_query($enlace,$sql_turno)){
-                                        //$sql_factura
-                                        //if(mysqli_query($enlace,$sql_factura))
-                                        header("Location: facturar.php/?provincia=".$provincia."&ciudad=".$ciudad."&cod_postal=".$cod_postal."&direccion=".$direccion."&cuit=".$cuit."&fecha_hora_turno=".$fecha_hora_turno."&servicio=".$servicio);
+                                else{                              
+                                    $data = json_decode( file_get_contents('https://afip.tangofactura.com/Rest/GetContribuyenteFull?cuit='.$cuit), true );
+                                    
+                                    if(isset($data)){                                                                        
+                                        $provincia=$data['Contribuyente']['domicilioFiscal']['nombreProvincia'];
+                                        $ciudad=$data['Contribuyente']['domicilioFiscal']['localidad'];
+                                        $cod_postal=$data['Contribuyente']['domicilioFiscal']['codPostal'];
+                                        $direccion=$data['Contribuyente']['domicilioFiscal']['direccion'];                                        
                                         
+                                        $sql = "INSERT INTO turnos (id_cliente, id_servicio, fecha_hora_turno) VALUES ($id_cliente, $servicio, '$fecha_hora_turno')";
+                              
+                                        if(mysqli_query($enlace,$sql)){
+                                            header("Location: facturar.php/?provincia=".$provincia."&ciudad=".$ciudad."&cod_postal=".$cod_postal."&direccion=".$direccion."&cuit=".$cuit."&fecha_hora_turno=".$fecha_hora_turno."&servicio=".$servicio);
+                                           
+                                        } 
+                                        else{
+                                            print"<div class='lista-errores'><div class='error'>Lo siento hubo algun problema en la Base de Datos, contacte con el administrador</div></div>";                                
+                                        }                               
+
+                                        //header('Location: mensaje.php?msj=5&fecha_turno='.$fecha_hora_turno);                                        
+                                        
+                                    }
+                                    else{                                        
+                                        //print var_dump($id_cliente);print var_dump($servicio);print var_dump($fecha_hora_turno);
+                                        $sql = "INSERT INTO turnos (id_cliente, id_servicio, fecha_hora_turno) VALUES ($id_cliente, $servicio, '$fecha_hora_turno')";
+                                
+                                        mysqli_query($enlace,$sql) ?
+                                            header('Location: mensaje.php?msj=5&fecha_turno='.$fecha_hora_turno) :
+                                            print"<div class='lista-errores'><div class='error'>Lo siento hubo algun problema en la Base de Datos, contacte con el administrador</div></div>";                                
                                     } 
-                                    else{
-                                        print"<div class='lista-errores'><div class='error'>Lo siento hubo algun problema en la Base de Datos, contacte con el administrador</div></div>";                                
-                                    }                               
-
-                                    //header('Location: mensaje.php?msj=5&fecha_turno='.$fecha_hora_turno);                                       
-                                        
                                 }
                             }
                         ?>              
@@ -135,8 +150,8 @@ if(!isset($_SESSION['activa'])) header('Location: mensaje.php?msj=2');
                         
                         <div class="contenedor-sexos" style="margin:20px 0 0 0">
                             <span style="text-decoration: underline;">Método de págo*:</span>
-                            <input type="radio" name="metodo-pago" id="credito" value="credito" required> <label for="credito">Credito</label>
-                            <input type="radio" name="metodo-pago" id="debito" value="debito" required> <label for="debito">Debito</label>
+                            <input type="radio" name="metodo-pago" id="tarjeta" value="tarjeta" required> <label for="tarjeta">Credito</label>
+                            <input type="radio" name="metodo-pago" id="efectivo" value="efectivo" required> <label for="efectivo">Debito</label>
                         </div>
 
                         <fieldset class="form-serv-indiv" style="width: 100%; padding: 0  10px 10px 10px">
@@ -174,7 +189,6 @@ if(!isset($_SESSION['activa'])) header('Location: mensaje.php?msj=2');
         </footer>
         <p style="color: white; text-decoration: underline; font-size: 1rem; margin-top: 10px;">Desarrollado por Dev-Team. Contacto: 3624-284819</p>
     </div>    
-    <script src="./js/agregarServicio.js"></script>
     <script src="./js/redirigir.js"></script>
     <!--<script src="./js/ingreso-datos-tarjeta.js"></script>-->
 </body> 

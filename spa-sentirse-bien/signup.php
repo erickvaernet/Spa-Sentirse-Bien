@@ -39,7 +39,9 @@
                             if(!empty($_POST['nombre'])){
                                 $nombre = $_POST['nombre'];
                                 $apellido = $_POST['apellido'];
-                                $dni=$_POST['dni'];
+                                //$dni=$_POST['dni'];
+                                $cuit=$_POST['cuit'];
+                                $direccion=$_POST['direccion'];
                                 $telefono= $_POST['telefono'];
                                 $email = $_POST['email'];
                                 $contrasena = $_POST['contrasena'];                                
@@ -53,8 +55,13 @@
                                 empty($apellido)? array_push($array_errores, "El campo Apellido no pude estar vacío"):"";
                                 preg_match("/^[A-Z]*$/i",$apellido)==0? array_push($array_errores, "El campo Apellido solo puede contener letras"):"";
 
-                                empty($dni)? array_push($array_errores, "El campo DNI no pude estar vacío"):"";
-                                preg_match("/^[0-9]*$/i",$dni)==0? array_push($array_errores, "El campo DNI solo puede contener numeros"):"";
+                                //empty($dni)? array_push($array_errores, "El campo DNI no pude estar vacío"):"";
+                                //preg_match("/^[0-9]*$/i",$dni)==0? array_push($array_errores, "El campo DNI solo puede contener numeros"):"";
+                                
+                                empty($cuit)? array_push($array_errores, "El campo CUIT no pude estar vacío"):"";
+                                preg_match("/^[0-9]*$/i",$cuit)==0? array_push($array_errores, "El campo CUIT solo puede contener numeros"):"";
+                                
+                                empty($nombre)? array_push($array_errores, "El campo Dirección no pude estar vacío"):"";                                 
 
                                 empty($telefono)? array_push($array_errores, "El campo Telefono no pude estar vacío"):"";
                                 preg_match("/^[0-9]*$/i",$telefono)==0? array_push($array_errores, "El campo Telefono solo puede contener numeros"):"";
@@ -75,10 +82,11 @@
                                     }
                                     echo"</div>";
                                 }
-                                else{                                       
+                                else{           
+                                    $dni=substr($cuit,2,-1);
                                     $contrasena= md5($contrasena);
                                     //$sexo= $sexo==true? true:false;
-                                    $sql = "INSERT INTO clientes (nombre, apellido, dni, telefono, email, clave, id_sexo) VALUES ('$nombre', '$apellido', $dni, $telefono, '$email', '$contrasena', $sexo)";
+                                    $sql = "INSERT INTO clientes (nombre, apellido, dni, telefono, email, clave, cuit, direccion, id_sexo) VALUES ('$nombre', '$apellido', $dni, $telefono, '$email', '$contrasena',$cuit, '$direccion', $sexo)";
                                     //print var_dump($sql);
                                     mysqli_query($enlace,$sql) ?
                                         header('Location: mensaje.php?msj=4'):
@@ -92,8 +100,16 @@
                         <label for="apellido">Apellido:</label>
                         <input type="text" name="apellido" id="apellido" placeholder="Itroduzca su Apellido">
 
+                        <!--
                         <label for="dni">DNI*</label>
                         <input id="dni" name="dni" type="number" placeholder="DNI" required>
+                        -->
+
+                        <label for="cuit" >CUIT sin guiones para la facturacion*</label>
+                        <input id="cuit" name="cuit" type="number" placeholder="Cuit sin guiones" required>
+                        
+                        <label for="direccion">Direccion para la facturación*</label>
+                        <input id="direccion" name="direccion" type="text" placeholder="Calle y número" required>
 
                         <label for="telefono">Teléfono de contacto*</label>
                         <input type="text" name="telefono" id="telefono" placeholder="Telefono" required>

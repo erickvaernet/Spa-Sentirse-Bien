@@ -69,8 +69,12 @@
                                         $_SESSION['id_cliente']=$datos['id_cliente'];
                                         $_SESSION['nombre']=$datos['nombre'];
                                         $_SESSION['apellido']=$datos['apellido'];
-                                        $_SESSION['email']=$datos['email'];
+                                        $_SESSION['dni']=$datos['dni'];
+                                        $_SESSION['email']=$datos['email'];                                        
+                                        $_SESSION['cuit']=$datos['cuit'];
+                                        $_SESSION['direccion']=$datos['direccion'];
                                         $_SESSION['sexo']=$datos['sexo']==0? "masculino":"femenino";
+                                        
                                         header('Location: mensaje.php?msj=1');
                                         print "<p style='font-size: 4rem;'>exito asdasdasdasasd</p>";
                                     }

@@ -42,7 +42,6 @@ if(!isset($_SESSION['activa'])) header('Location: mensaje.php?msj=2');
                                 $id_cliente=$_SESSION['id_cliente'];
                                 $servicio= $_POST['servicio'];
                                 $fecha_hora_turno = str_replace("T", " ", $_POST["fecha"]) . ":00";
-                                $cuit = $_POST['cuit'];
                                 $nombre_tarjeta = $_POST['nombre-tarjeta'];
                                 $numero_tarjeta = $_POST['numero-tarjeta'];
                                 $vencimiento_tarjeta = $_POST['vencimiento-tarjeta'];
@@ -56,9 +55,6 @@ if(!isset($_SESSION['activa'])) header('Location: mensaje.php?msj=2');
                                 empty($numero_tarjeta)? array_push($array_errores, "El campo numero de tarjeta no pude estar vacío"):"";
                                 preg_match("/^[0-9]*$/i",$numero_tarjeta)==0? array_push($array_errores, "El campo numero de tarjeta solo puede contener numeros"):"";
                             
-                                empty($numero_tarjeta)? array_push($array_errores, "El campo cuit no pude estar vacío"):"";
-                                preg_match("/^[0-9]*$/i",$numero_tarjeta)==0? array_push($array_errores, "El campo cuit solo puede contener numeros"):"";                            
-
                                 empty($vencimiento_tarjeta)? array_push($array_errores, "El campo vencimiento de la tarjeta de tarjeta no pude estar vacío"):"";
                                 preg_match("/^[0-9]*\/[0-9]*$/i",$vencimiento_tarjeta)==0? array_push($array_errores, "El campo vencimiento de la tarjeta solo puede contener numeros y un / "):"";
                                 
@@ -71,40 +67,25 @@ if(!isset($_SESSION['activa'])) header('Location: mensaje.php?msj=2');
                                         print "<div class='error'>$value</div>";
                                     }
                                     echo"</div>";
-                                }                                
-                                else{                              
-                                    $data = json_decode( file_get_contents('https://afip.tangofactura.com/Rest/GetContribuyenteFull?cuit='.$cuit), true );
-                                    
-                                    if(isset($data)){                                                                        
-                                        $provincia=$data['Contribuyente']['domicilioFiscal']['nombreProvincia'];
-                                        $ciudad=$data['Contribuyente']['domicilioFiscal']['localidad'];
-                                        $cod_postal=$data['Contribuyente']['domicilioFiscal']['codPostal'];
-                                        $direccion=$data['Contribuyente']['domicilioFiscal']['direccion'];                                        
-                                        
-                                        $sql = "INSERT INTO turnos (id_cliente, id_servicio, fecha_hora_turno) VALUES ($id_cliente, $servicio, '$fecha_hora_turno')";
+                                }
+                                else{                                      
+                                    //print var_dump($id_cliente);print var_dump($servicio);print var_dump($fecha_hora_turno);
+                                    $sql = "INSERT INTO turnos (id_cliente, id_servicio, fecha_hora_turno) VALUES ($id_cliente, $servicio, '$fecha_hora_turno')";
                               
-                                        mysqli_query($enlace,$sql) ?
-                                            header('Location: mensaje.php?msj=5&fecha_turno='.$fecha_hora_turno) :
-                                            print"<div class='lista-errores'><div class='error'>Lo siento hubo algun problema en la Base de Datos, contacte con el administrador</div></div>";                                
-
-                                        
-                                        //header("Location: facturar.php/?provincia=".$provincia."&ciudad=".$ciudad."&cod_postal=".$cod_postal."&direccion=".$direccion."&cuit=".$cuit."&fecha_hora_turno=".$fecha_hora_turno."&servicio=".$servicio);
-                                        
-                                        
-                                    }
-                                    else{                                        
-                                        //print var_dump($id_cliente);print var_dump($servicio);print var_dump($fecha_hora_turno);
-                                        $sql = "INSERT INTO turnos (id_cliente, id_servicio, fecha_hora_turno) VALUES ($id_cliente, $servicio, '$fecha_hora_turno')";
-                                
-                                        mysqli_query($enlace,$sql) ?
-                                            header('Location: mensaje.php?msj=5&fecha_turno='.$fecha_hora_turno) :
-                                            print"<div class='lista-errores'><div class='error'>Lo siento hubo algun problema en la Base de Datos, contacte con el administrador</div></div>";                                
-                                    } 
+                                    mysqli_query($enlace,$sql) ?
+                                        header('Location: mensaje.php?msj=5&fecha_turno='.$fecha_hora_turno) :
+                                        print"<div class='lista-errores'><div class='error'>Lo siento hubo algun problema en la Base de Datos, contacte con el administrador</div></div>";                                
                                 }
                             }
                         ?>              
+                        
+                        <label for="cuit" style="margin-top: 20px;">CUIT sin guiones para la facturacion*</label>
+                        <input id="cuit" name="cuit" type="number" placeholder="Cuit sin guiones" required>
+                        
+                        <label for="direccion">Direccion para la facturación*</label>
+                        <input id="direccion" name="direccion" type="text" placeholder="Calle y número" required>
 
-                        <label for="servicio" style="margin-top: 20px;">Servicio*:</label>
+                        <label for="servicio" style="margin-top: 10px;">Servicio*:</label>
                         <select name="servicio" id="servicio" >
                             <option value="1">Masajes Anti-stress</option>
                             <option value="2">Masajes Descontracturantes</option>
@@ -121,7 +102,7 @@ if(!isset($_SESSION['activa'])) header('Location: mensaje.php?msj=2');
                             <option value="13">Crio frecuencia corporal con efecto lifting</option>
                             <option value="14">Ultracavitación</option>
                         </select>
-
+                        
                         <label for="fecha">Fecha y hora del turno*</label>
                         <input type="datetime-local" id="fecha" name="fecha" required="required">
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -139,9 +120,6 @@ if(!isset($_SESSION['activa'])) header('Location: mensaje.php?msj=2');
                                 cale.setAttribute("min", today + "T00:00");
                             });
                         </script>
-                        
-                        <label for="cuit">CUIT para la facturación:*</label>
-                        <input id="cuit" name="cuit" type="number" placeholder="Cuit sin guiones ni puntos" required>
 
                         <div class="contenedor-sexos" style="margin:20px 0 0 0">
                             <span style="text-decoration: underline;">Método de págo*:</span>
