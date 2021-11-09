@@ -88,13 +88,17 @@ if (!isset($_SESSION['activa'])) header('Location: mensaje.php?msj=2');
                                     }
                                     $contador++;
                                 }*/ 
-                                
-                                if(count($servicios)==1){
+
+                                if(count($servicios)==1){                                                                        
+                                    $_SESSION['servicios']=$servicios;
+                                    $_SESSION['fechas']=$_REQUEST['fechas'];
                                     $s=$servicios[0];
                                     $f=$fechas[0];
                                     header("Location: mensaje.php?msj=5&direccion=" . $direccion . "&cuit=" . $cuit . "&fecha=" . $f . "&servicio=" . $s);
                                     //header('Location: mensaje.php?msj=5');
-                                }else{
+                                }else{                                    
+                                    $_SESSION['servicios']=$servicios;
+                                    $_SESSION['fechas']=$_REQUEST['fechas'];
                                     $s1=$servicios[0];
                                     $f1=$fechas[0];                                    
                                     $s2=$servicios[1];

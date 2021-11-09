@@ -67,22 +67,11 @@
                         }
                         if($error==0) print "<div class='mensaje_exito_grande'> $mensaje </div>";
                         else print "<div class='mensaje_error_grande'> $mensaje </div>";
-                        if($codigo_mensaje=='5'){
-                            print "SIIIIIII";
-                            if(isset($_REQUEST['fecha'])){                                
-                                print "<div class='mensaje_exito_grande'> asdasdasd";
-                                print $_REQUEST['servicio'];
-                                print $_REQUEST['fecha'];
-                                print "</div>";
-                            }else{                                                                
-                                print "<div class='mensaje_exito_grande'> asdasdasd";
-                                print $_REQUEST['servicio1'];
-                                print $_REQUEST['fecha1'];                                
-                                print $_REQUEST['servicio2'];
-                                print $_REQUEST['fecha2'];
-                                print "</div>";
-                            }
+                        if($codigo_mensaje=='5' ){
+                            print '<a href="./facturar2.php" target="_blank" ><input id="enviar" type="submit" value="Descargar Factura" name="descargar" style="width: 70%;"></a>';
+                            
                         }
+                        
                     ?>                       
 
                     </div>
@@ -104,3 +93,32 @@
     
 </body>
 </html>
+
+
+<?php
+/*
+if(!$codigo_mensaje=='5' ){   
+
+    session_start();                   
+    if(isset($_REQUEST['fecha'])){ 
+        sleep(7);
+        header("Location: facturar2.php/?");
+        
+    }else{     
+        sleep(7);
+        header("Location: facturar2.php/?");                                                           
+        print "<div class='mensaje_exito_grande'> asdasdasd";
+        print "sesion=";                                
+        $serv=$_SESSION['servicios'];
+        print $_SESSION['servicios'] . "<_>";
+        $serv1=$serv[0];
+        print $serv1;
+        print " =======";
+        print $_REQUEST['servicio1'];
+        print $_REQUEST['fecha1'];                                
+        print $_REQUEST['servicio2'];
+        print $_REQUEST['fecha2'];
+        print "</div>";
+    }
+}*/
+?>
