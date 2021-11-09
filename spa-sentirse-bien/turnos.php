@@ -92,41 +92,47 @@ if(!isset($_SESSION['activa'])) header('Location: mensaje.php?msj=2');
                             }
                         ?>              
 
-                        <label for="servicio" style="margin-top: 20px;">Servicio*:</label>
-                        <select name="servicio" id="servicio" >
-                            <option value="1">Masajes Anti-stress</option>
-                            <option value="2">Masajes Descontracturantes</option>
-                            <option value="3">Masajes con piedras calientes</option>
-                            <option value="4">Masajes Circulatorios</option>
-                            <option value="5">Lifting de pestaña</option>
-                            <option value="6">Depilación Facial</option>
-                            <option value="7">Belleza de manos y pies</option>
-                            <option value="8">Micro exfoliación facial con punta de diamante</option>
-                            <option value="9">Limpieza facial profunda + Hidratación</option>
-                            <option value="10">Crio frecuencia facial con efecto lifting</option>
-                            <option value="11">VelaSlim</option>
-                            <option value="12">DermoHealth</option>
-                            <option value="13">Crio frecuencia corporal con efecto lifting</option>
-                            <option value="14">Ultracavitación</option>
-                        </select>
+<div id="container-servicios" style="display: flex; flex-direction:column; align-items: center; align-content: center;">
+                        <div>
+                            <label for="servicio" style="margin-top: 20px; max-width: 95%; width: 90%">Servicio*:</label>
+                            <select name="servicios[]" id="serv1" >
+                                <option value="1">Masajes Anti-stress</option>
+                                <option value="2">Masajes Descontracturantes</option>
+                                <option value="3">Masajes con piedras calientes</option>
+                                <option value="4">Masajes Circulatorios</option>
+                                <option value="5">Lifting de pestaña</option>
+                                <option value="6">Depilación Facial</option>
+                                <option value="7">Belleza de manos y pies</option>
+                                <option value="8">Micro exfoliación facial con punta de diamante</option>
+                                <option value="9">Limpieza facial profunda + Hidratación</option>
+                                <option value="10">Crio frecuencia facial con efecto lifting</option>
+                                <option value="11">VelaSlim</option>
+                                <option value="12">DermoHealth</option>
+                                <option value="13">Crio frecuencia corporal con efecto lifting</option>
+                                <option value="14">Ultracavitación</option>
+                            </select>
 
-                        <label for="fecha">Fecha y hora del turno*</label>
-                        <input type="datetime-local" id="fecha" name="fecha" required="required">
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-                        <script>
-                            $(document).ready(function() {
+                            <label for="fecha">Fecha y hora del turno*</label>
+                            <input type="datetime-local" id="fecha1" name="fechas[]" required="required" style="max-width: 100%; width: 100%">
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                            <script>
+                                $(document).ready(function() {
 
-                                var now = new Date();
+                                    var now = new Date();
 
-                                var day = ("0" + now.getDate()).slice(-2);
-                                var month = ("0" + (now.getMonth() + 1)).slice(-2);
+                                    var day = ("0" + now.getDate()).slice(-2);
+                                    var month = ("0" + (now.getMonth() + 1)).slice(-2);
 
-                                var today = now.getFullYear() + "-" + (month) + "-" + (day);
-                                $("#fecha").val(today);
-                                const cale = document.getElementById("fecha");
-                                cale.setAttribute("min", today + "T00:00");
-                            });
-                        </script>
+                                    var today = now.getFullYear() + "-" + (month) + "-" + (day);
+                                    $("#fecha1").val(today);
+                                    const cale = document.getElementById("fecha1");
+                                    cale.setAttribute("min", today + "T00:00");
+                                });
+                            </script>
+                            </div>
+
+                            <input type="button" value="+   " name="agregar" id="agregarBton" style="display:block;color: red; width: 50px; height:50px; border-radius: 50%;"></input>
+                        </div>
                         
                         <!--
                         <label for="cuit">CUIT para la facturación:*</label>

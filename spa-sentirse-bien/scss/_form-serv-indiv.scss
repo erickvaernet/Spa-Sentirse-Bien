@@ -11,7 +11,13 @@
         color: black;
         border-radius: 50px;
         border-style: none;
-        text-indent: 1rem;
+        text-indent: 1rem;        
+        
+    }
+    input.btton_agregar{
+        color: red;
+        width: 10%;
+        border-radius: 50%;
     }
     .contenedor-select-serv{
         position: relative;        

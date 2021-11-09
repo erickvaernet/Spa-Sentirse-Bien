@@ -482,6 +482,12 @@ main .contenedor-centrador .contenedor-contacto .description {
   text-indent: 1rem;
 }
 
+.form-serv-indiv input.btton_agregar, .form-serv-indiv .contenedor-select-serv select.btton_agregar, .form-serv-indiv textarea.btton_agregar {
+  color: red;
+  width: 10%;
+  border-radius: 50%;
+}
+
 .form-serv-indiv .contenedor-select-serv {
   position: relative;
   display: -webkit-box;
