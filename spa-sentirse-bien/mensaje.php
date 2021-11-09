@@ -36,7 +36,7 @@
                        
                     <?php
                         $codigo_mensaje=$_REQUEST['msj'];
-                        isset($_REQUEST['fecha_turno'])? $fecha= $_REQUEST['fecha_turno']:"";
+                        //isset($_REQUEST['fecha_turno'])? $fecha= $_REQUEST['fecha_turno']:"";
                         switch ($codigo_mensaje) {
                             case '1':
                                 $mensaje="¡Te logueaste exitosamente!<br>Ahora podes reservar un turno -><a href='./turnos.php'>aquí</a><-";
@@ -56,7 +56,8 @@
                                 $error=0;
                                 break;                                                                        
                             case '5':
-                                $mensaje="Se creo el Turno con exito para el ".$fecha."hs";
+                                //$mensaje="Se creo el Turno con exito para el ".$fecha."hs";
+                                $mensaje="Se creo el Turno con exito ";
                                 $error=0;
                                 break;                     
                             default:
@@ -66,6 +67,22 @@
                         }
                         if($error==0) print "<div class='mensaje_exito_grande'> $mensaje </div>";
                         else print "<div class='mensaje_error_grande'> $mensaje </div>";
+                        if($codigo_mensaje=='5'){
+                            print "SIIIIIII";
+                            if(isset($_REQUEST['fecha'])){                                
+                                print "<div class='mensaje_exito_grande'> asdasdasd";
+                                print $_REQUEST['servicio'];
+                                print $_REQUEST['fecha'];
+                                print "</div>";
+                            }else{                                                                
+                                print "<div class='mensaje_exito_grande'> asdasdasd";
+                                print $_REQUEST['servicio1'];
+                                print $_REQUEST['fecha1'];                                
+                                print $_REQUEST['servicio2'];
+                                print $_REQUEST['fecha2'];
+                                print "</div>";
+                            }
+                        }
                     ?>                       
 
                     </div>

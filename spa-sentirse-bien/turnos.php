@@ -74,17 +74,35 @@ if (!isset($_SESSION['activa'])) header('Location: mensaje.php?msj=2');
                                 $cuit = $_SESSION['cuit'];
                                 $direccion = $_SESSION['direccion'];
 
+                                $error=0;
                                 $contador=0;
+                                /*
                                 foreach($servicios as $servicio){
                                     $fecha=$fechas[$contador];
                                     $sql_turno = "INSERT INTO turnos (id_cliente, id_servicio, fecha_hora_turno) VALUES ($id_cliente, $servicio, '$fecha')";                                
                                     if (mysqli_query($enlace, $sql_turno)) {    
-                                        print "<div class='lista-errores'><div class='error'>Todo bien</div></div>";
+                                        print "<div class='lista-errores'><div class='error'>Todo bien</div></div>";                                        
                                     } else {
+                                        $error=1;
                                         print "<div class='lista-errores'><div class='error'>Lo siento hubo algun problema en la Base de Datos, contacte con el administrador</div></div>";
                                     }
                                     $contador++;
+                                }*/ 
+                                
+                                if(count($servicios)==1){
+                                    $s=$servicios[0];
+                                    $f=$fechas[0];
+                                    header("Location: mensaje.php?msj=5&direccion=" . $direccion . "&cuit=" . $cuit . "&fecha=" . $f . "&servicio=" . $s);
+                                    //header('Location: mensaje.php?msj=5');
+                                }else{
+                                    $s1=$servicios[0];
+                                    $f1=$fechas[0];                                    
+                                    $s2=$servicios[1];
+                                    $f2=$fechas[1];
+                                    header("Location: mensaje.php?msj=5&direccion=" . $direccion . "&cuit=" . $cuit . "&fecha1=" . $f1 . "&servicio1=" . $s1 . "&fecha2=" . $f2 . "&servicio2=" . $s2);
                                 }
+
+                                
 
                                 
                                 /*
