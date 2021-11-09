@@ -74,9 +74,13 @@ if (!isset($_SESSION['activa'])) header('Location: mensaje.php?msj=2');
                                 $cuit = $_SESSION['cuit'];
                                 $direccion = $_SESSION['direccion'];
 
+                                print "<div class='lista-errores'><div class='error'> cliente $id_cliente</div></div>";
+
                                 $contador=0;
                                 foreach($servicios as $servicio){
                                     $fecha=$fechas[$contador];
+                                    $fecha= str_replace("T", " ", $fecha) . ":00";
+                                    print "<div class='lista-errores'><div class='error'> serv $servicio fecha $fecha</div></div>";
                                     $sql_turno = "INSERT INTO turnos (id_cliente, id_servicio, fecha_hora_turno) VALUES ($id_cliente, $servicio, '$fecha')";                                
                                     if (mysqli_query($enlace, $sql_turno)) {    
                                         print "<div class='lista-errores'><div class='error'>Todo bien</div></div>";

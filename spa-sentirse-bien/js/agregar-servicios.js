@@ -25,7 +25,7 @@ function agregarServicio(){
         <option value='14'>Ultracavitación</option>
     </select>
 
-    <label for='fecha'>Fecha y hora del turno*</label>
+    <label for='fecha2'>Fecha y hora del turno*</label>
     <input type='datetime-local' id='fecha2' name='fechas[]' required='required' style='max-width: 100%; width: 100%'> `
     
     contenedorServicios.insertBefore(divContenedor,botonAgregar);
