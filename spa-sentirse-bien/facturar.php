@@ -14,7 +14,7 @@ session_start();
 if(!isset($_SESSION['activa'])) header('Location: mensaje.php?msj=2');
 
 //Recibir detalles de factura
-$id_factura = 11199799111;//$_POST["id_factura"];
+$id_factura = 21;//$_POST["id_factura"];
 $fecha_factura = date("d-m-Y");
 
 //Recibir los datos de la empresa
@@ -30,18 +30,19 @@ $identificacion_fiscal_tienda = "29388755592";
 //Recibir los datos del cliente
 $nombre_cliente = $_SESSION['nombre'];
 $apellidos_cliente = $_SESSION['apellido'];//$_POST["apellidos_cliente"];
-$direccion_cliente = $_REQUEST['direccion'];// $_POST["direccion_cliente"];
-$poblacion_cliente = $_REQUEST['ciudad'];//$_POST["poblacion_cliente"];
-$provincia_cliente = $_REQUEST['provincia'];//$_POST["provincia_cliente"];
-$codigo_postal_cliente = $_REQUEST['cod_postal'];//$_POST["codigo_postal_cliente"];
-$identificacion_fiscal_cliente = $_REQUEST['cuit'];//$_POST["identificacion_fiscal_cliente"];
+$direccion_cliente = $_SESSION['direccion'];// $_POST["direccion_cliente"];
+$poblacion_cliente = "";//$_POST["poblacion_cliente"];
+$provincia_cliente = "";//$_POST["provincia_cliente"];
+$codigo_postal_cliente = ""['cod_postal'];//$_POST["codigo_postal_cliente"];
+$identificacion_fiscal_cliente = $_SESSION['cuit'];//$_POST["identificacion_fiscal_cliente"];
 
 //Recibir los datos de los productos
 $iva = "21";//$_POST["iva"];
 $gastos_de_envio = "0";//$_POST["gastos_de_envio"];
 $unidades = "1";//$_POST["unidades"];
-$productos = $_REQUEST['servicio'];//$_POST["productos"];
-$precio_unidad = "5000";//$_POST["precio_unidad"];
+$servicioss=$_SESSION['servicios'];
+$productos = "Masajes Anti-Stress";//$_POST["productos"];
+$precio_unidad = "7000";//$_POST["precio_unidad"];
 
 //variable que guarda el nombre del archivo PDF
 $archivo="factura-$id_factura.pdf";
@@ -98,9 +99,6 @@ $pdf->MultiCell(
 "Nombre: ".$nombre_cliente."\n".
 "Apellidos: ".$apellidos_cliente."\n".
 "Direccion: ".$direccion_cliente."\n".
-"Poblacion: ".$poblacion_cliente."\n".
-"Provincia: ".$provincia_cliente."\n".
-"Codigo Postal: ".$codigo_postal_cliente."\n".
 "Identificacion Fiscal: ".$identificacion_fiscal_cliente, 
 0, // bordes 0 = no | 1 = si
 "J", // texto justificado

@@ -39,9 +39,10 @@ $identificacion_fiscal_cliente = $_SESSION['cuit'];//$_POST["identificacion_fisc
 //Recibir los datos de los productos
 $iva = "21";//$_POST["iva"];
 $gastos_de_envio = "0";//$_POST["gastos_de_envio"];
-$unidades = "1,1";//$_POST["unidades"];
-$productos = "Masajes Anti-Stress, Masajes con piedras calientes";//$_POST["productos"];
-$precio_unidad = "7000,7200";//$_POST["precio_unidad"];
+$unidades = "1";//$_POST["unidades"];
+$servicioss=$_SESSION['servicios'];
+$productos = $servicioss[0];//$_POST["productos"];
+$precio_unidad = "5000";//$_POST["precio_unidad"];
 
 //variable que guarda el nombre del archivo PDF
 $archivo="factura-$id_factura.pdf";

@@ -68,7 +68,14 @@
                         if($error==0) print "<div class='mensaje_exito_grande'> $mensaje </div>";
                         else print "<div class='mensaje_error_grande'> $mensaje </div>";
                         if($codigo_mensaje=='5' ){
-                            print '<a href="./facturar2.php" target="_blank" ><input id="enviar" type="submit" value="Descargar Factura" name="descargar" style="width: 70%;"></a>';
+                            if(isset($_REQUEST['servicio'])){
+                                print '<a href="./facturar.php" target="_blank" ><input id="enviar" type="submit" value="Descargar Factura" name="descargar" style="width: 70%;"></a>';
+                            }
+                            else{
+                                print "<br> <br><br> <br>";
+                                print '<a href="./facturar2.php" target="_blank" ><input id="enviar" type="submit" value="Descargar Factura" name="descargar" style="width: 70%;"></a>';
+                            }
+                            
                             
                         }
                         

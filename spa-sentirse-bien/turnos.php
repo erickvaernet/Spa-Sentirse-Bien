@@ -76,7 +76,7 @@ if (!isset($_SESSION['activa'])) header('Location: mensaje.php?msj=2');
 
                                 $error=0;
                                 $contador=0;
-                                /*
+                                
                                 foreach($servicios as $servicio){
                                     $fecha=$fechas[$contador];
                                     $sql_turno = "INSERT INTO turnos (id_cliente, id_servicio, fecha_hora_turno) VALUES ($id_cliente, $servicio, '$fecha')";                                
@@ -87,7 +87,7 @@ if (!isset($_SESSION['activa'])) header('Location: mensaje.php?msj=2');
                                         print "<div class='lista-errores'><div class='error'>Lo siento hubo algun problema en la Base de Datos, contacte con el administrador</div></div>";
                                     }
                                     $contador++;
-                                }*/ 
+                                }
 
                                 if(count($servicios)==1){                                                                        
                                     $_SESSION['servicios']=$servicios;
